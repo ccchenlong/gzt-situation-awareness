@@ -1,0 +1,17 @@
+# 依赖
+node_modules/
+
+# 临时文件
+*.tmp
+*.temp
+*.log
+
+# 设计临时文件
+.design/
+
+# 备份文件
+*.bak
+
+# 系统文件
+Thumbs.db
+.DS_Store

@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>态势感知系统 — 原型与 PRD 模块对照</title>
+<style>
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body { height: 100%; }
+body { font-family: "Microsoft YaHei", "PingFang SC", sans-serif; font-size: 13px; color: #333; background: #f5f7fa; }
+.app { display: flex; height: 100vh; overflow: hidden; }
+.left { width: 75%; display: flex; flex-direction: column; border-right: 1px solid #e8e8e8; background: #fff; }
+.right { width: 25%; display: flex; flex-direction: column; background: #f5f7fa; font-size: 12px; }
+.topbar { height: 44px; background: #001529; color: #fff; display: flex; align-items: center; padding: 0 16px; gap: 10px; overflow-x: auto; }
+.topbar span { font-weight: 600; white-space: nowrap; }
+.topbar a { color: rgba(255,255,255,.85); text-decoration: none; white-space: nowrap; padding: 4px 10px; border-radius: 4px; font-size: 13px; }
+.topbar a:hover, .topbar a.active { background: #1890ff; color: #fff; }
+iframe { flex: 1; border: none; width: 100%; height: 100%; }
+.doc { flex: 1; overflow-y: auto; padding: 20px; }
+.module { background: #fff; border-radius: 4px; padding: 20px; margin-bottom: 16px; box-shadow: 0 2px 8px rgba(0,0,0,.06); }
+.module h2 { font-size: 18px; color: #1f1f1f; margin-bottom: 14px; padding-bottom: 10px; border-bottom: 2px solid #1890ff; }
+.module h3 { font-size: 14px; color: #1890ff; margin: 16px 0 8px; }
+.module p { line-height: 1.8; margin: 8px 0; color: #555; }
+.module ul { margin: 6px 0 6px 20px; }
+.module li { line-height: 1.8; margin: 4px 0; }
+.module table { width: 100%; border-collapse: collapse; margin: 10px 0; font-size: 12px; }
+.module th, .module td { border: 1px solid #e8e8e8; padding: 8px 10px; text-align: left; vertical-align: top; }
+.module th { background: #f0f5ff; color: #1f1f1f; font-weight: 600; }
+.doc-title { font-size: 22px; font-weight: 600; text-align: center; margin-bottom: 6px; color: #1f1f1f; }
+.doc-subtitle { text-align: center; color: #888; margin-bottom: 20px; font-size: 12px; }
+
+.right { background: #f0f2f5; }
+.tabs-header { display: flex; gap: 8px; padding: 12px; background: #fff; border-bottom: 1px solid #e8e8e8; overflow-x: auto; }
+.tab-card { flex: 0 0 auto; padding: 8px 12px; background: #fff; border: 1px solid #e8e8e8; border-radius: 6px; cursor: pointer; white-space: nowrap; font-size: 12px; color: #555; box-shadow: 0 1px 2px rgba(0,0,0,.05); transition: all .2s; }
+.tab-card:hover { border-color: #1890ff; color: #1890ff; }
+.tab-card.active { border-color: #1890ff; color: #1890ff; background: #e6f7ff; box-shadow: 0 2px 8px rgba(24,144,255,.15); font-weight: 600; }
+.content-area { flex: 1; overflow-y: auto; padding: 12px; }
+.module { display: none; background: #fff; border-radius: 8px; padding: 16px; box-shadow: 0 2px 12px rgba(0,0,0,.06); }
+.module.active { display: block; }
+.module h2 { border-bottom: none; padding-bottom: 0; margin-bottom: 12px; font-size: 16px; }
+.module h3 { margin-top: 14px; font-size: 13px; }
+.module p, .module li { line-height: 1.6; }
+.module table { font-size: 11px; }
+.module th, .module td { padding: 6px 8px; }
+</style>
+</head>
+<body>
+<div class="app">
+<div class="left">
+<div class="topbar" style="justify-content: space-between;">
+<span>原型设计稿</span>
+<a href="02_原型设计稿.html" target="_blank">在新窗口打开原型</a>
+</div>
+<iframe src="02_原型设计稿.html" title="原型设计稿"></iframe>
+</div>
+<div class="right"><div class="topbar" style="justify-content: space-between;"><span>PRD 模块需求</span><a href="03_PRD文档_模块版.md" target="_blank">在新窗口打开 PRD</a></div><div class="tabs-header" id="tabsHeader"><div class="tab-card active" data-target="mod-extract">数据转换提取配置</div><div class="tab-card" data-target="mod-query">数据查询</div><div class="tab-card" data-target="mod-filter">数据过滤</div><div class="tab-card" data-target="mod-model">数据模型管理</div><div class="tab-card" data-target="mod-chart">数据图表管理</div><div class="tab-card" data-target="mod-notice">通知公告管理</div><div class="tab-card" data-target="mod-log">日志管理</div><div class="tab-card" data-target="mod-param">参数管理</div><div class="tab-card" data-target="mod-integration">系统对接</div></div><div class="content-area" id="contentArea"><div class="module active" id="mod-extract">
+<h2>模块一：数据转换提取配置</h2>
+<h3>功能名称</h3>
+<p>数据报表导出模板管理、可视化图表导出模板管理、导出任务执行与辅助功能。</p>
+<h3>用户场景</h3>
+<p>数据治理专员或业务人员需要按照政务数据报送、业务分析、大屏展示等要求，将单位、部门、用户及业务数据按固定格式导出为报表或可视化图表；在大数据量、敏感数据、定时/异步场景下，需要分页、脱敏、进度、通知和历史记录支撑。</p>
+<h3>业务规则</h3>
+<ul>
+<li>模板名称在同一范围内唯一，必填字段校验通过后方可保存，保存后默认启用。</li>
+<li>导出字段选择、数据脱敏规则、分页参数、导出格式均属于“模板配置项”。</li>
+<li>预览数据量限制在合理范围，敏感数据默认脱敏展示。</li>
+<li>大文件导出采用异步任务，任务完成后保留导出历史，支持查询、下载、重新导出。</li>
+<li>所有导出操作记录操作日志。</li>
+</ul>
+<h3>输入</h3>
+<ul>
+<li>用户权限身份信息。</li>
+<li>模板基础信息（名称、描述、格式、类型）。</li>
+<li>字段选择、脱敏字段、分页大小、过滤条件。</li>
+<li>导出任务触发指令。</li>
+</ul>
+<h3>输出</h3>
+<ul>
+<li>报表/图表导出模板列表。</li>
+<li>导出任务信息（任务 ID、进度、状态、预计剩余时间）。</li>
+<li>导出的文件（Excel/CSV/图片/PDF）。</li>
+<li>站内信/系统通知。</li>
+<li>操作日志记录。</li>
+</ul>
+<h3>异常处理</h3>
+<ul>
+<li>无权限：提示“暂无权限”并禁用操作入口。</li>
+<li>数据校验失败：高亮错误字段并提示具体原因。</li>
+<li>导出任务失败：记录失败原因，通知提交人，支持重新导出。</li>
+<li>系统异常：记录日志并提示“操作失败，请联系管理员”。</li>
+</ul>
+<h3>验收标准</h3>
+<ul>
+<li>支持导出模板的创建、编辑、复制、删除、批量删除、版本管理。</li>
+<li>模板配置包含导出字段选择、数据脱敏、分页设置、导出格式。</li>
+<li>导出流程包含预览、进度展示、系统通知。</li>
+<li>导出历史记录独立页面，可查询、下载、重新导出。</li>
+<li>敏感数据在预览和导出文件中均脱敏。</li>
+</ul>
+<h3>原型元素映射</h3>
+<table>
+<tr><th>原型元素</th><th>需求条目</th></tr>
+<tr><td>左侧菜单“数据转换提取配置”</td><td>模块入口</td></tr>
+<tr><td>“数据报表导出”/“可视化图表导出”Tab</td><td>两类导出模板管理</td></tr>
+<tr><td>“新增/编辑模板”弹窗</td><td>模板基础信息、字段选择、脱敏、分页</td></tr>
+<tr><td>模板列表“导出”按钮</td><td>导出预览 → 进度 → 通知流程</td></tr>
+<tr><td>“导出历史记录”Tab</td><td>历史记录查询、下载、重新导出</td></tr>
+</table>
+</div><div class="module" id="mod-query">
+<h2>模块二：数据查询</h2>
+<h3>功能名称</h3>
+<p>多类型索引管理（单位索引、部门索引、用户索引、待办事项索引、群组索引、网络电话索引、活跃度索引、日程索引、应用索引、行为索引）。</p>
+<h3>用户场景</h3>
+<p>业务人员在日常工作中需要快速检索组织人员、业务对象和行为记录，例如按单位编码查找单位、按姓名查找用户、按时间段查找活跃记录、按关键词查找待办或日程，并基于查询结果开展数据治理或统计分析。</p>
+<h3>业务规则</h3>
+<ul>
+<li>索引数据来源于各业务系统，按实体类型分别维护，禁止跨实体混用字段。</li>
+<li>支持编码精确/自动补全、名称模糊查询、关键词查询、自定义时间范围查询。</li>
+<li>查询结果按用户权限范围过滤，敏感字段脱敏展示。</li>
+<li>支持索引的新增、编辑、删除、批量删除、版本管理、统计查看。</li>
+<li>记录用户查询历史，支持复用历史条件。</li>
+</ul>
+<h3>输入</h3>
+<ul>
+<li>用户权限身份信息。</li>
+<li>实体类型选择（单位/部门/用户/待办/群组等）。</li>
+<li>查询条件：编码、名称、关键词、状态、标签、时间范围。</li>
+</ul>
+<h3>输出</h3>
+<ul>
+<li>索引列表（含编码、名称、关键属性、数据来源、标签、版本、状态、更新时间）。</li>
+<li>索引详情/编辑信息。</li>
+<li>统计结果与查询历史。</li>
+</ul>
+<h3>异常处理</h3>
+<ul>
+<li>无权限：隐藏操作按钮并提示“暂无权限”。</li>
+<li>查询超时：提示“查询超时，请缩小查询范围”。</li>
+<li>数据不存在：列表展示空状态。</li>
+<li>系统异常：记录日志并提示“操作失败，请联系管理员”。</li>
+</ul>
+<h3>验收标准</h3>
+<ul>
+<li>覆盖 10 类索引实体，每类索引独立字段和过滤条件。</li>
+<li>支持精确查询、模糊查询、关键词查询、自定义时间查询。</li>
+<li>列表支持分页，每类索引默认 20 条。</li>
+<li>新增/编辑/删除/版本/统计操作完整可用。</li>
+<li>查询历史可记录、复用、清空。</li>
+</ul>
+<h3>原型元素映射</h3>
+<table>
+<tr><th>原型元素</th><th>需求条目</th></tr>
+<tr><td>左侧菜单“数据查询”</td><td>模块入口</td></tr>
+<tr><td>顶部 Tab“单位索引/部门索引/用户索引/其他索引”</td><td>实体类型切换</td></tr>
+<tr><td>各实体过滤区</td><td>编码、名称、关键词、时间范围等查询条件</td></tr>
+<tr><td>索引列表</td><td>查询结果展示与分页</td></tr>
+<tr><td>“新增/编辑索引”弹窗</td><td>索引维护</td></tr>
+<tr><td>“查询历史记录”弹窗</td><td>历史条件复用</td></tr>
+</table>
+</div><div class="module" id="mod-filter">
+<h2>模块三：数据过滤</h2>
+<h3>功能名称</h3>
+<p>多维度数据过滤查询（单位基本信息、部门基本信息、行政区划信息、业务条线信息、组织架构信息、时间范围信息、地理位置信息、区域编码信息）。</p>
+<h3>用户场景</h3>
+<p>用户在进行数据治理或业务分析时，需要按不同维度组合筛选数据，例如查询某行政区划下的单位、某业务条线涉及的部门、特定时间范围内的活跃用户、指定地理范围内的对象等。</p>
+<h3>业务规则</h3>
+<ul>
+<li>八个维度分别提供独立的过滤项，用户可在同一页面切换维度。</li>
+<li>每个维度支持多条件组合查询、关键词查询、名称查询、自定义时间范围查询。</li>
+<li>查询结果默认按相关性或更新时间排序。</li>
+<li>保存用户查询记录，支持一键复用历史条件。</li>
+</ul>
+<h3>输入</h3>
+<ul>
+<li>维度选择。</li>
+<li>过滤条件：编码、名称、关键词、行政区划、业务条线、时间起止、经纬度/半径、区域编码等。</li>
+<li>用户权限身份信息。</li>
+</ul>
+<h3>输出</h3>
+<ul>
+<li>符合条件的记录列表及命中数量。</li>
+<li>查询历史记录。</li>
+</ul>
+<h3>异常处理</h3>
+<ul>
+<li>无权限：提示并禁用查询。</li>
+<li>条件格式错误：高亮提示，例如时间范围倒置。</li>
+<li>查询超时：提示缩小范围。</li>
+<li>系统异常：记录日志并提示管理员。</li>
+</ul>
+<h3>验收标准</h3>
+<ul>
+<li>覆盖 8 类维度，每类维度过滤项完整。</li>
+<li>支持多条件组合、关键词、名称、自定义时间查询。</li>
+<li>查询历史可查看、复用、清空。</li>
+</ul>
+<h3>原型元素映射</h3>
+<table>
+<tr><th>原型元素</th><th>需求条目</th></tr>
+<tr><td>左侧菜单“数据过滤”</td><td>模块入口</td></tr>
+<tr><td>顶部八个维度 Tab</td><td>维度切换</td></tr>
+<tr><td>各维度过滤条件区</td><td>对应维度的查询条件</td></tr>
+<tr><td>查询结果列表</td><td>过滤结果展示</td></tr>
+<tr><td>“查询历史记录”按钮/弹窗</td><td>历史条件复用</td></tr>
+</table>
+</div><div class="module" id="mod-model">
+<h2>模块四：数据模型管理</h2>
+<h3>功能名称</h3>
+<p>统计模型管理（模型新增、编辑、删除、状态控制、版本管理、指标公式配置）。</p>
+<h3>用户场景</h3>
+<p>数据分析人员需要定义“用户活跃度”“部门协同度”等统计指标，为态势感知图表和大屏提供计算依据。</p>
+<h3>业务规则</h3>
+<ul>
+<li>模型编码唯一，不可重复。</li>
+<li>统计维度支持日、周、月多选。</li>
+<li>指标公式可配置，保存前需语法校验。</li>
+<li>模型支持启用/禁用，禁用后不再参与计算。</li>
+<li>修改模型生成版本记录，支持查看历史版本。</li>
+</ul>
+<h3>输入</h3>
+<ul>
+<li>模型编码、名称、描述。</li>
+<li>统计维度（日/周/月复选）。</li>
+<li>指标公式、状态。</li>
+</ul>
+<h3>输出</h3>
+<ul>
+<li>模型列表。</li>
+<li>模型计算结果。</li>
+<li>版本历史记录。</li>
+</ul>
+<h3>异常处理</h3>
+<ul>
+<li>编码重复：提示“模型编码已存在”。</li>
+<li>公式校验失败：高亮公式输入框并提示错误。</li>
+<li>无权限：禁用保存/删除按钮。</li>
+</ul>
+<h3>验收标准</h3>
+<ul>
+<li>支持模型新增、编辑、删除、查询。</li>
+<li>统计维度支持多选。</li>
+<li>模型状态可启用/禁用。</li>
+<li>版本历史可查。</li>
+</ul>
+<h3>原型元素映射</h3>
+<table>
+<tr><th>原型元素</th><th>需求条目</th></tr>
+<tr><td>左侧菜单“数据模型管理”</td><td>模块入口</td></tr>
+<tr><td>模型列表</td><td>模型查询与展示</td></tr>
+<tr><td>“新增/编辑统计模型”弹窗</td><td>模型信息、统计维度、指标公式</td></tr>
+<tr><td>统计维度复选框</td><td>日/周/月维度选择</td></tr>
+<tr><td>状态开关/下拉</td><td>启用/禁用控制</td></tr>
+</table>
+</div><div class="module" id="mod-chart">
+<h2>模块五：数据图表管理</h2>
+<h3>功能名称</h3>
+<p>可视化图表配置与展示（图表类型选择、数据源绑定、样式配置、预览、导出）。</p>
+<h3>用户场景</h3>
+<p>领导或业务人员需要通过折线图、柱状图、饼图等直观查看态势指标，并支持将图表导出为图片用于汇报材料。</p>
+<h3>业务规则</h3>
+<ul>
+<li>图表必须绑定已存在的统计模型或数据源。</li>
+<li>支持折线、柱状、饼图、面积图等常用类型。</li>
+<li>图表配置实时预览，预览数据与最终展示一致。</li>
+<li>图表支持导出为 PNG/JPG 图片。</li>
+</ul>
+<h3>输入</h3>
+<ul>
+<li>图表名称、类型、数据源/统计模型。</li>
+<li>维度、指标、颜色、标题等样式配置。</li>
+<li>导出指令。</li>
+</ul>
+<h3>输出</h3>
+<ul>
+<li>图表展示。</li>
+<li>图片文件。</li>
+<li>图表配置记录。</li>
+</ul>
+<h3>异常处理</h3>
+<ul>
+<li>数据源无效：提示“数据源不存在或已禁用”。</li>
+<li>无权限：隐藏图表配置入口。</li>
+<li>导出失败：提示重新尝试。</li>
+</ul>
+<h3>验收标准</h3>
+<ul>
+<li>支持常见图表类型。</li>
+<li>图表与数据一致，无变形。</li>
+<li>可导出图片。</li>
+</ul>
+<h3>原型元素映射</h3>
+<table>
+<tr><th>原型元素</th><th>需求条目</th></tr>
+<tr><td>左侧菜单“数据图表管理”</td><td>模块入口</td></tr>
+<tr><td>图表配置 Tab</td><td>图表类型、数据源、样式</td></tr>
+<tr><td>图表预览区</td><td>实时预览</td></tr>
+<tr><td>“导出图片”按钮</td><td>图片导出</td></tr>
+</table>
+</div><div class="module" id="mod-notice">
+<h2>模块六：通知公告管理</h2>
+<h3>功能名称</h3>
+<p>通知公告发布与管理。</p>
+<h3>用户场景</h3>
+<p>系统管理员需要向指定范围的用户发布系统通知、维护公告、政策更新等。</p>
+<h3>业务规则</h3>
+<ul>
+<li>公告发布前支持草稿保存和预览。</li>
+<li>支持按组织范围、角色范围设置接收人。</li>
+<li>支持设置有效期和置顶。</li>
+<li>发布后用户在站内信/通知中心可见。</li>
+</ul>
+<h3>输入</h3>
+<ul>
+<li>公告标题、内容、类型。</li>
+<li>接收范围、有效期、置顶标志。</li>
+</ul>
+<h3>输出</h3>
+<ul>
+<li>公告列表。</li>
+<li>站内信通知。</li>
+<li>阅读记录。</li>
+</ul>
+<h3>异常处理</h3>
+<ul>
+<li>必填项缺失：高亮提示。</li>
+<li>发布失败：提示原因并允许重新发布。</li>
+</ul>
+<h3>验收标准</h3>
+<ul>
+<li>支持公告新增、编辑、发布、撤销、删除。</li>
+<li>支持按范围和有效期发布。</li>
+<li>用户可查看已发布公告。</li>
+</ul>
+<h3>原型元素映射</h3>
+<table>
+<tr><th>原型元素</th><th>需求条目</th></tr>
+<tr><td>左侧菜单“通知公告管理”</td><td>模块入口</td></tr>
+<tr><td>公告列表</td><td>公告查询/展示</td></tr>
+<tr><td>“新增/编辑公告”弹窗</td><td>公告内容、范围、有效期配置</td></tr>
+</table>
+</div><div class="module" id="mod-log">
+<h2>模块七：日志管理</h2>
+<h3>功能名称</h3>
+<p>系统日志审计（操作日志、登录日志、查询日志、导出日志、日志保留策略）。</p>
+<h3>用户场景</h3>
+<p>安全审计员或管理员需要追踪用户的操作行为、登录行为、查询行为和导出行为，满足政务系统审计合规要求。</p>
+<h3>业务规则</h3>
+<ul>
+<li>日志内容不可篡改，保留期限可配置。</li>
+<li>支持按操作类型、时间范围、用户、模块等条件检索。</li>
+<li>日志支持导出为文件备查。</li>
+<li>超出保留期限的日志按策略自动归档或清理。</li>
+</ul>
+<h3>输入</h3>
+<ul>
+<li>日志检索条件。</li>
+<li>日志保留策略配置。</li>
+</ul>
+<h3>输出</h3>
+<ul>
+<li>日志列表。</li>
+<li>日志导出文件。</li>
+<li>审计报告。</li>
+</ul>
+<h3>异常处理</h3>
+<ul>
+<li>无审计权限：隐藏日志入口。</li>
+<li>日志导出失败：提示重试。</li>
+</ul>
+<h3>验收标准</h3>
+<ul>
+<li>覆盖操作、登录、查询、导出日志。</li>
+<li>支持多条件检索和导出。</li>
+<li>保留期限可配置。</li>
+</ul>
+<h3>原型元素映射</h3>
+<table>
+<tr><th>原型元素</th><th>需求条目</th></tr>
+<tr><td>左侧菜单“日志管理”</td><td>模块入口</td></tr>
+<tr><td>日志类型 Tab</td><td>操作/登录/查询/导出日志</td></tr>
+<tr><td>日志列表</td><td>检索结果</td></tr>
+<tr><td>“导出日志”按钮</td><td>日志导出</td></tr>
+</table>
+</div><div class="module" id="mod-param">
+<h2>模块八：参数管理</h2>
+<h3>功能名称</h3>
+<p>系统参数配置（运行参数、保留期限、默认分页、通知开关等）。</p>
+<h3>用户场景</h3>
+<p>系统管理员需要动态调整系统运行参数，而无需修改代码或重启服务。</p>
+<h3>业务规则</h3>
+<ul>
+<li>参数按分组管理，关键参数变更记录日志。</li>
+<li>参数值变更后即时生效或按策略生效。</li>
+<li>部分敏感参数仅系统管理员可修改。</li>
+</ul>
+<h3>输入</h3>
+<ul>
+<li>参数键、值、分组、说明。</li>
+</ul>
+<h3>输出</h3>
+<ul>
+<li>参数列表。</li>
+<li>生效的系统配置。</li>
+</ul>
+<h3>异常处理</h3>
+<ul>
+<li>参数值格式校验失败：高亮提示。</li>
+<li>无权限：禁用编辑。</li>
+</ul>
+<h3>验收标准</h3>
+<ul>
+<li>支持参数查询、编辑。</li>
+<li>变更留痕。</li>
+</ul>
+<h3>原型元素映射</h3>
+<table>
+<tr><th>原型元素</th><th>需求条目</th></tr>
+<tr><td>左侧菜单“参数管理”</td><td>模块入口</td></tr>
+<tr><td>参数列表</td><td>参数展示</td></tr>
+<tr><td>“编辑参数”弹窗</td><td>参数值修改</td></tr>
+</table>
+</div><div class="module" id="mod-integration">
+<h2>模块九：系统对接</h2>
+<h3>功能名称</h3>
+<p>对接“赣政通”平台信创版底座（接口统计、接口分析、同步频率、接口适配、接口日志、日志分类、权限认证）。</p>
+<h3>用户场景</h3>
+<p>系统需要与“赣政通”底座平台进行数据同步和接口调用，管理员需要监控接口健康度、配置同步策略、查看调用日志并管理接口认证。</p>
+<h3>业务规则</h3>
+<ul>
+<li>接口调用需经过认证，认证信息加密存储。</li>
+<li>同步频率可配置，支持定时和手动触发。</li>
+<li>接口适配规则可配置，用于字段映射和格式转换。</li>
+<li>接口调用日志分类存储，支持按类型、时间、状态检索。</li>
+<li>失败接口支持告警和重试。</li>
+</ul>
+<h3>输入</h3>
+<ul>
+<li>接口配置、认证信息、同步策略。</li>
+<li>适配规则、日志检索条件。</li>
+</ul>
+<h3>输出</h3>
+<ul>
+<li>接口调用统计和分析报告。</li>
+<li>同步结果。</li>
+<li>接口日志和告警。</li>
+</ul>
+<h3>异常处理</h3>
+<ul>
+<li>接口超时/失败：自动重试并记录失败原因。</li>
+<li>认证失效：提示更新认证信息。</li>
+<li>同步冲突：按优先级或人工确认处理。</li>
+</ul>
+<h3>验收标准</h3>
+<ul>
+<li>统计、分析、同步频率、适配、日志、日志分类、认证 7 个子模块完整可用。</li>
+<li>接口调用可监控，日志可检索。</li>
+<li>认证和同步策略可配置。</li>
+</ul>
+<h3>原型元素映射</h3>
+<table>
+<tr><th>原型元素</th><th>需求条目</th></tr>
+<tr><td>左侧菜单“系统对接”</td><td>模块入口</td></tr>
+<tr><td>七个对接 Tab</td><td>统计/分析/同步频率/适配/日志/分类/认证</td></tr>
+<tr><td>接口统计卡片</td><td>接口调用统计</td></tr>
+<tr><td>接口配置表单</td><td>同步策略、适配规则、认证配置</td></tr>
+<tr><td>接口日志列表</td><td>调用日志查询</td></tr>
+</table>
+</div></div></div>
+</div>
+<script>
+const tabs = document.querySelectorAll('.tab-card');
+const modules = document.querySelectorAll('.module');
+
+function switchTab(targetId) {
+  tabs.forEach(t => t.classList.toggle('active', t.dataset.target === targetId));
+  modules.forEach(m => m.classList.toggle('active', m.id === targetId));
+}
+
+tabs.forEach(t => {
+  t.addEventListener('click', () => switchTab(t.dataset.target));
+});
+
+// 接收原型 iframe 传来的模块切换消息
+window.addEventListener('message', e => {
+  if (e.data && e.data.type === 'switchPRD' && e.data.module) {
+    switchTab(e.data.module);
+  }
+});
+</script>
+</body>
+</html>
