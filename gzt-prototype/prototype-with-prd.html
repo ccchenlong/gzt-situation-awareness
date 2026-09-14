@@ -483,6 +483,9 @@ select.el-select { min-width: 120px; }
         <div class="menu-item" data-page="page-param" onclick="showPage('page-param')">
           <i>&#9679;</i><span>参数管理</span>
         </div>
+        <div class="menu-item" data-page="page-icon" onclick="showPage('page-icon')">
+          <i>&#9679;</i><span>图标管理</span>
+        </div>
       </div>
     </div>
   </aside>
@@ -563,6 +566,10 @@ select.el-select { min-width: 120px; }
       <button class="btn btn-info" onclick="openDialog('指标配置','chart-metric')">指标配置</button>
       <button class="btn" onclick="openDialog('刷新频率','chart-refresh-rate')">刷新频率</button>
       <button class="btn" onclick="openDialog('样式配置','chart-style')">样式配置</button>
+    </div>
+  </div>
+  <div class="toolbar" style="margin-top:8px;">
+    <div class="btn-group">
       <button class="btn" onclick="openDialog('布局配置','chart-layout')">布局配置</button>
       <button class="btn" onclick="openDialog('推送配置','chart-push')">推送配置</button>
       <button class="btn" onclick="openDialog('权限配置','chart-permission')">权限配置</button>
@@ -645,6 +652,10 @@ select.el-select { min-width: 120px; }
       <button class="btn btn-info" onclick="openDialog('指标配置','chart-metric')">指标配置</button>
       <button class="btn" onclick="openDialog('刷新频率','chart-refresh-rate')">刷新频率</button>
       <button class="btn" onclick="openDialog('样式配置','chart-style')">样式配置</button>
+    </div>
+  </div>
+  <div class="toolbar" style="margin-top:8px;">
+    <div class="btn-group">
       <button class="btn" onclick="openDialog('布局配置','chart-layout')">布局配置</button>
       <button class="btn" onclick="openDialog('推送配置','chart-push')">推送配置</button>
       <button class="btn" onclick="openDialog('权限配置','chart-permission')">权限配置</button>
@@ -727,6 +738,10 @@ select.el-select { min-width: 120px; }
       <button class="btn btn-info" onclick="openDialog('指标配置','chart-metric')">指标配置</button>
       <button class="btn" onclick="openDialog('刷新频率','chart-refresh-rate')">刷新频率</button>
       <button class="btn" onclick="openDialog('样式配置','chart-style')">样式配置</button>
+    </div>
+  </div>
+  <div class="toolbar" style="margin-top:8px;">
+    <div class="btn-group">
       <button class="btn" onclick="openDialog('布局配置','chart-layout')">布局配置</button>
       <button class="btn" onclick="openDialog('推送配置','chart-push')">推送配置</button>
       <button class="btn" onclick="openDialog('权限配置','chart-permission')">权限配置</button>
@@ -809,6 +824,10 @@ select.el-select { min-width: 120px; }
       <button class="btn btn-info" onclick="openDialog('指标配置','chart-metric')">指标配置</button>
       <button class="btn" onclick="openDialog('刷新频率','chart-refresh-rate')">刷新频率</button>
       <button class="btn" onclick="openDialog('样式配置','chart-style')">样式配置</button>
+    </div>
+  </div>
+  <div class="toolbar" style="margin-top:8px;">
+    <div class="btn-group">
       <button class="btn" onclick="openDialog('布局配置','chart-layout')">布局配置</button>
       <button class="btn" onclick="openDialog('推送配置','chart-push')">推送配置</button>
       <button class="btn" onclick="openDialog('权限配置','chart-permission')">权限配置</button>
@@ -1105,6 +1124,11 @@ select.el-select { min-width: 120px; }
 </div></div><div id="tab-dept-filter" class="tab-panel"><div class="filter-bar">
 <div class="filter-row">
 <div class="form-item"><label>过滤名称</label><input class="el-input" name="name" placeholder="请输入过滤名称"></div>
+<div class="form-item"><label>单位</label><select class="el-select" name="org"><option value="全部">全部</option><option value="省政府办公厅">省政府办公厅</option><option value="省发展和改革委员会">省发展和改革委员会</option><option value="省教育厅">省教育厅</option><option value="省工业和信息化厅">省工业和信息化厅</option></select></div>
+<div class="form-item"><label>部门</label><select class="el-select" name="dept"><option value="全部">全部</option><option value="办公室">办公室</option><option value="人事处">人事处</option><option value="财务处">财务处</option><option value="业务一处">业务一处</option><option value="业务二处">业务二处</option></select></div>
+<div class="form-item"><label>区域</label><select class="el-select" name="region"><option value="全部">全部</option><option value="省级">省级</option><option value="南昌市">南昌市</option><option value="赣州市">赣州市</option><option value="九江市">九江市</option><option value="宜春市">宜春市</option></select></div>
+</div>
+<div class="filter-row">
 <div class="form-item"><label>分类筛选</label><select class="el-select" name="category"><option value="全部">全部</option><option value="一级分类">一级分类</option><option value="二级分类">二级分类</option><option value="三级分类">三级分类</option></select></div>
 <div class="form-item"><label>标签筛选</label><select class="el-select" name="tag"><option value="全部">全部</option><option value="常用">常用</option><option value="重要">重要</option><option value="归档">归档</option><option value="推荐">推荐</option></select></div>
 <div class="form-item"><label>排序方式</label><select class="el-select" name="sort"><option value="按名称">按名称</option><option value="按创建时间">按创建时间</option><option value="按更新时间">按更新时间</option><option value="按使用次数">按使用次数</option></select></div>
@@ -1137,6 +1161,11 @@ select.el-select { min-width: 120px; }
 </div></div><div id="tab-region-filter" class="tab-panel"><div class="filter-bar">
 <div class="filter-row">
 <div class="form-item"><label>过滤名称</label><input class="el-input" name="name" placeholder="请输入过滤名称"></div>
+<div class="form-item"><label>单位</label><select class="el-select" name="org"><option value="全部">全部</option><option value="省政府办公厅">省政府办公厅</option><option value="省发展和改革委员会">省发展和改革委员会</option><option value="省教育厅">省教育厅</option><option value="省工业和信息化厅">省工业和信息化厅</option></select></div>
+<div class="form-item"><label>部门</label><select class="el-select" name="dept"><option value="全部">全部</option><option value="办公室">办公室</option><option value="人事处">人事处</option><option value="财务处">财务处</option><option value="业务一处">业务一处</option><option value="业务二处">业务二处</option></select></div>
+<div class="form-item"><label>区域</label><select class="el-select" name="region"><option value="全部">全部</option><option value="省级">省级</option><option value="南昌市">南昌市</option><option value="赣州市">赣州市</option><option value="九江市">九江市</option><option value="宜春市">宜春市</option></select></div>
+</div>
+<div class="filter-row">
 <div class="form-item"><label>分类筛选</label><select class="el-select" name="category"><option value="全部">全部</option><option value="一级分类">一级分类</option><option value="二级分类">二级分类</option><option value="三级分类">三级分类</option></select></div>
 <div class="form-item"><label>标签筛选</label><select class="el-select" name="tag"><option value="全部">全部</option><option value="常用">常用</option><option value="重要">重要</option><option value="归档">归档</option><option value="推荐">推荐</option></select></div>
 <div class="form-item"><label>排序方式</label><select class="el-select" name="sort"><option value="按名称">按名称</option><option value="按创建时间">按创建时间</option><option value="按更新时间">按更新时间</option><option value="按使用次数">按使用次数</option></select></div>
@@ -1374,6 +1403,81 @@ select.el-select { min-width: 120px; }
   <div class="btn-group"><button class="btn btn-primary" onclick="openDialog('新增参数','param-add')">+ 新增</button> <button class="btn btn-danger" onclick="openDialog('批量删除确认','batch-delete-confirm')">批量删除</button> <button class="btn btn-success" onclick="openDialog('导出配置','export-config')">导出</button> <button class="btn btn-info" onclick="openDialog('导入字典','dict-import')">导入</button></div>
   <div style="color:#909399;font-size:13px;">共 <span class="total-num">0</span> 条</div>
 </div><table class="data-table"><thead><tr><th><input type="checkbox"></th><th>参数编码</th><th>参数名称</th><th>参数值</th><th>参数类型</th><th>状态</th><th>创建时间</th><th>操作</th></tr></thead><tbody><tr><td><input type="checkbox"></td><td>PAR001</td><td>参数1</td><td>value1</td><td>数字</td><td><label class="switch"><input type="checkbox" ><span class="slider"></span></label></td><td>2024-05-01 10:00</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="openDialog('查看详情','view-detail')">查看</a> <a onclick="openDialog('修改记录','modify-record')">修改记录</a></td></tr><tr><td><input type="checkbox"></td><td>PAR002</td><td>参数2</td><td>value2</td><td>布尔</td><td><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></td><td>2024-05-02 10:00</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="openDialog('查看详情','view-detail')">查看</a> <a onclick="openDialog('修改记录','modify-record')">修改记录</a></td></tr><tr><td><input type="checkbox"></td><td>PAR003</td><td>参数3</td><td>value3</td><td>字符串</td><td><label class="switch"><input type="checkbox" ><span class="slider"></span></label></td><td>2024-05-03 10:00</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="openDialog('查看详情','view-detail')">查看</a> <a onclick="openDialog('修改记录','modify-record')">修改记录</a></td></tr><tr><td><input type="checkbox"></td><td>PAR004</td><td>参数4</td><td>value4</td><td>数字</td><td><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></td><td>2024-05-04 10:00</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="openDialog('查看详情','view-detail')">查看</a> <a onclick="openDialog('修改记录','modify-record')">修改记录</a></td></tr><tr><td><input type="checkbox"></td><td>PAR005</td><td>参数5</td><td>value5</td><td>布尔</td><td><label class="switch"><input type="checkbox" ><span class="slider"></span></label></td><td>2024-05-05 10:00</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="openDialog('查看详情','view-detail')">查看</a> <a onclick="openDialog('修改记录','modify-record')">修改记录</a></td></tr><tr><td><input type="checkbox"></td><td>PAR006</td><td>参数6</td><td>value6</td><td>字符串</td><td><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></td><td>2024-05-06 10:00</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="openDialog('查看详情','view-detail')">查看</a> <a onclick="openDialog('修改记录','modify-record')">修改记录</a></td></tr><tr><td><input type="checkbox"></td><td>PAR007</td><td>参数7</td><td>value7</td><td>数字</td><td><label class="switch"><input type="checkbox" ><span class="slider"></span></label></td><td>2024-05-07 10:00</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="openDialog('查看详情','view-detail')">查看</a> <a onclick="openDialog('修改记录','modify-record')">修改记录</a></td></tr><tr><td><input type="checkbox"></td><td>PAR008</td><td>参数8</td><td>value8</td><td>布尔</td><td><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></td><td>2024-05-08 10:00</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="openDialog('查看详情','view-detail')">查看</a> <a onclick="openDialog('修改记录','modify-record')">修改记录</a></td></tr></tbody></table><div class="pagination">
+  <button>&lt;</button><button class="active">1</button><button>2</button><button>3</button><button>&gt;</button>
+</div></div></div></section>
+<section id="page-icon" class="page-section"><div class="card"><div class="card-body"><div class="topbar-left" style="margin-bottom:16px;font-size:16px;">图标管理</div><div class="filter-bar">
+<div class="form-item"><label>图标名称</label><input class="el-input" name="name" placeholder="请输入图标名称"></div>
+<div class="form-item"><label>图标分类</label><select class="el-select" name="category"><option value="全部">全部</option><option value="系统图标">系统图标</option><option value="业务图标">业务图标</option><option value="导航图标">导航图标</option></select></div>
+<div class="form-item"><label>状态</label><select class="el-select" name="status"><option value="全部">全部</option><option value="启用">启用</option><option value="禁用">禁用</option></select></div>
+</div><div class="toolbar">
+  <div class="btn-group"><button class="btn btn-primary" onclick="openDialog('新增图标','icon-add')">+ 新增</button> <button class="btn btn-danger" onclick="openDialog('批量删除确认','batch-delete-confirm')">批量删除</button> <button class="btn btn-success" onclick="openDialog('导出配置','export-config')">导出</button> <button class="btn btn-info" onclick="openDialog('导入图标','icon-import')">导入</button></div>
+  <div style="color:#909399;font-size:13px;">共 <span class="total-num">0</span> 条</div>
+</div><div style="display:grid;grid-template-columns:repeat(8,1fr);gap:16px;padding:16px 0;">
+  <div style="text-align:center;padding:16px 8px;border:1px solid #ebeef5;border-radius:4px;cursor:pointer;" onmouseover="this.style.borderColor='#409eff'" onmouseout="this.style.borderColor='#ebeef5'">
+    <div style="font-size:32px;color:#606266;margin-bottom:8px;">&#9733;</div>
+    <div style="font-size:12px;color:#606266;">star</div>
+  </div>
+  <div style="text-align:center;padding:16px 8px;border:1px solid #ebeef5;border-radius:4px;cursor:pointer;" onmouseover="this.style.borderColor='#409eff'" onmouseout="this.style.borderColor='#ebeef5'">
+    <div style="font-size:32px;color:#606266;margin-bottom:8px;">&#9829;</div>
+    <div style="font-size:12px;color:#606266;">heart</div>
+  </div>
+  <div style="text-align:center;padding:16px 8px;border:1px solid #ebeef5;border-radius:4px;cursor:pointer;" onmouseover="this.style.borderColor='#409eff'" onmouseout="this.style.borderColor='#ebeef5'">
+    <div style="font-size:32px;color:#606266;margin-bottom:8px;">&#9881;</div>
+    <div style="font-size:12px;color:#606266;">setting</div>
+  </div>
+  <div style="text-align:center;padding:16px 8px;border:1px solid #ebeef5;border-radius:4px;cursor:pointer;" onmouseover="this.style.borderColor='#409eff'" onmouseout="this.style.borderColor='#ebeef5'">
+    <div style="font-size:32px;color:#606266;margin-bottom:8px;">&#128269;</div>
+    <div style="font-size:12px;color:#606266;">search</div>
+  </div>
+  <div style="text-align:center;padding:16px 8px;border:1px solid #ebeef5;border-radius:4px;cursor:pointer;" onmouseover="this.style.borderColor='#409eff'" onmouseout="this.style.borderColor='#ebeef5'">
+    <div style="font-size:32px;color:#606266;margin-bottom:8px;">&#128100;</div>
+    <div style="font-size:12px;color:#606266;">user</div>
+  </div>
+  <div style="text-align:center;padding:16px 8px;border:1px solid #ebeef5;border-radius:4px;cursor:pointer;" onmouseover="this.style.borderColor='#409eff'" onmouseout="this.style.borderColor='#ebeef5'">
+    <div style="font-size:32px;color:#606266;margin-bottom:8px;">&#128229;</div>
+    <div style="font-size:12px;color:#606266;">bell</div>
+  </div>
+  <div style="text-align:center;padding:16px 8px;border:1px solid #ebeef5;border-radius:4px;cursor:pointer;" onmouseover="this.style.borderColor='#409eff'" onmouseout="this.style.borderColor='#ebeef5'">
+    <div style="font-size:32px;color:#606266;margin-bottom:8px;">&#128193;</div>
+    <div style="font-size:12px;color:#606266;">folder</div>
+  </div>
+  <div style="text-align:center;padding:16px 8px;border:1px solid #ebeef5;border-radius:4px;cursor:pointer;" onmouseover="this.style.borderColor='#409eff'" onmouseout="this.style.borderColor='#ebeef5'">
+    <div style="font-size:32px;color:#606266;margin-bottom:8px;">&#128221;</div>
+    <div style="font-size:12px;color:#606266;">edit</div>
+  </div>
+  <div style="text-align:center;padding:16px 8px;border:1px solid #ebeef5;border-radius:4px;cursor:pointer;" onmouseover="this.style.borderColor='#409eff'" onmouseout="this.style.borderColor='#ebeef5'">
+    <div style="font-size:32px;color:#606266;margin-bottom:8px;">&#128465;</div>
+    <div style="font-size:12px;color:#606266;">trash</div>
+  </div>
+  <div style="text-align:center;padding:16px 8px;border:1px solid #ebeef5;border-radius:4px;cursor:pointer;" onmouseover="this.style.borderColor='#409eff'" onmouseout="this.style.borderColor='#ebeef5'">
+    <div style="font-size:32px;color:#606266;margin-bottom:8px;">&#10003;</div>
+    <div style="font-size:12px;color:#606266;">check</div>
+  </div>
+  <div style="text-align:center;padding:16px 8px;border:1px solid #ebeef5;border-radius:4px;cursor:pointer;" onmouseover="this.style.borderColor='#409eff'" onmouseout="this.style.borderColor='#ebeef5'">
+    <div style="font-size:32px;color:#606266;margin-bottom:8px;">&#10006;</div>
+    <div style="font-size:12px;color:#606266;">close</div>
+  </div>
+  <div style="text-align:center;padding:16px 8px;border:1px solid #ebeef5;border-radius:4px;cursor:pointer;" onmouseover="this.style.borderColor='#409eff'" onmouseout="this.style.borderColor='#ebeef5'">
+    <div style="font-size:32px;color:#606266;margin-bottom:8px;">&#8635;</div>
+    <div style="font-size:12px;color:#606266;">refresh</div>
+  </div>
+  <div style="text-align:center;padding:16px 8px;border:1px solid #ebeef5;border-radius:4px;cursor:pointer;" onmouseover="this.style.borderColor='#409eff'" onmouseout="this.style.borderColor='#ebeef5'">
+    <div style="font-size:32px;color:#606266;margin-bottom:8px;">&#8595;</div>
+    <div style="font-size:12px;color:#606266;">down</div>
+  </div>
+  <div style="text-align:center;padding:16px 8px;border:1px solid #ebeef5;border-radius:4px;cursor:pointer;" onmouseover="this.style.borderColor='#409eff'" onmouseout="this.style.borderColor='#ebeef5'">
+    <div style="font-size:32px;color:#606266;margin-bottom:8px;">&#8593;</div>
+    <div style="font-size:12px;color:#606266;">up</div>
+  </div>
+  <div style="text-align:center;padding:16px 8px;border:1px solid #ebeef5;border-radius:4px;cursor:pointer;" onmouseover="this.style.borderColor='#409eff'" onmouseout="this.style.borderColor='#ebeef5'">
+    <div style="font-size:32px;color:#606266;margin-bottom:8px;">&#9654;</div>
+    <div style="font-size:12px;color:#606266;">play</div>
+  </div>
+  <div style="text-align:center;padding:16px 8px;border:1px solid #ebeef5;border-radius:4px;cursor:pointer;" onmouseover="this.style.borderColor='#409eff'" onmouseout="this.style.borderColor='#ebeef5'">
+    <div style="font-size:32px;color:#606266;margin-bottom:8px;">&#9203;</div>
+    <div style="font-size:12px;color:#606266;">clock</div>
+  </div>
+</div><div class="pagination">
   <button>&lt;</button><button class="active">1</button><button>2</button><button>3</button><button>&gt;</button>
 </div></div></div></section>
 <section id="page-system" class="page-section"><div class="card"><div class="card-body"><div class="topbar-left" style="margin-bottom:16px;font-size:16px;">系统对接</div><div class="tabs"><div class="tab-item " data-tab="tab-sys-user" onclick="showTab('page-system','tab-sys-user')">用户查询统计</div><div class="tab-item " data-tab="tab-sys-dept" onclick="showTab('page-system','tab-sys-dept')">部门查询统计</div><div class="tab-item " data-tab="tab-sys-app" onclick="showTab('page-system','tab-sys-app')">应用查询统计</div><div class="tab-item " data-tab="tab-sys-todo" onclick="showTab('page-system','tab-sys-todo')">待办查询统计</div><div class="tab-item " data-tab="tab-sys-group" onclick="showTab('page-system','tab-sys-group')">群组查询统计</div><div class="tab-item " data-tab="tab-sys-phone" onclick="showTab('page-system','tab-sys-phone')">通话查询统计</div><div class="tab-item " data-tab="tab-sys-schedule" onclick="showTab('page-system','tab-sys-schedule')">日程查询统计</div><div class="tab-item active" data-tab="tab-sys-activity" onclick="showTab('page-system','tab-sys-activity')">活跃度统计</div><div class="tab-item " data-tab="tab-sys-behavior" onclick="showTab('page-system','tab-sys-behavior')">行为统计</div><div class="tab-item " data-tab="tab-sys-region" onclick="showTab('page-system','tab-sys-region')">区域统计</div><div class="tab-item " data-tab="tab-sys-interface" onclick="showTab('page-system','tab-sys-interface')">接口调用统计</div><div class="tab-item " data-tab="tab-sys-config" onclick="showTab('page-system','tab-sys-config')">对接配置</div><div class="tab-item " data-tab="tab-sys-mapping" onclick="showTab('page-system','tab-sys-mapping')">字段映射配置</div><div class="tab-item " data-tab="tab-sys-auth" onclick="showTab('page-system','tab-sys-auth')">认证配置</div><div class="tab-item " data-tab="tab-sys-push" onclick="showTab('page-system','tab-sys-push')">推送配置</div><div class="tab-item " data-tab="tab-sys-analysis" onclick="showTab('page-system','tab-sys-analysis')">对接分析</div><div class="tab-item " data-tab="tab-sys-error" onclick="showTab('page-system','tab-sys-error')">异常日志</div></div><div id="tab-sys-user" class="tab-panel"><div class="filter-bar">
@@ -1941,6 +2045,14 @@ var descData = {
     { id: 'filter-permission', title: '按权限过滤', rules: ['根据用户权限过滤数据', '支持本部门、下级部门、全部权限等范围', '权限范围随用户角色动态变化', '无权限数据不可见'], accept: '不同权限用户看到的数据范围正确，无权限数据不显示' },
     { id: 'filter-hierarchy', title: '按层级展示', rules: ['按省市县分级展示数据', '支持树形层级展示', '支持展开/折叠各层级节点', '层级缩进清晰，父子关系明确'], accept: '树形层级展示正确，展开折叠操作流畅' }
   ],
+  'page-icon': [
+    { id: 'icon-list', title: '图标列表展示', rules: ['以网格形式展示所有图标', '显示图标预览和图标名称', '支持按分类、名称搜索筛选', '支持分页展示', '鼠标悬停显示边框高亮效果'], accept: '图标以网格布局展示，每页16个，搜索筛选正常，悬停效果明显' },
+    { id: 'icon-add', title: '新增图标', rules: ['支持上传图标文件（SVG/PNG格式）', '支持设置图标名称和编码', '支持选择图标分类', '支持设置图标状态（启用/禁用）', '上传前校验文件格式和大小'], accept: '上传图标后列表新增记录，图标预览正常显示，信息填写完整可保存' },
+    { id: 'icon-edit', title: '编辑图标', rules: ['支持修改图标名称和分类', '支持替换图标文件', '支持调整图标状态', '修改后即时更新预览'], accept: '修改图标信息后列表同步更新，预览图正确显示' },
+    { id: 'icon-delete', title: '删除图标', rules: ['支持单个删除图标', '支持批量删除图标', '删除前二次确认', '已被引用的图标不可删除'], accept: '删除图标后列表减少，已引用图标提示不可删除并显示引用位置' },
+    { id: 'icon-import', title: '图标导入导出', rules: ['支持批量导入图标包', '支持导出选中图标', '支持SVG格式批量导入', '导入前校验图标格式和命名冲突'], accept: '批量导入后图标列表更新，导出文件包含完整图标资源' },
+    { id: 'icon-category', title: '图标分类管理', rules: ['支持系统图标/业务图标/导航图标等分类', '支持新增和编辑分类', '支持分类排序', '分类下显示图标数量统计'], accept: '分类管理功能正常，图标数量统计准确，排序可调整' }
+  ],
   'page-system': [
     { id: 'sys-user-active', title: '对接用户激活数信息', rules: ['从"赣政通"平台信创版底座获取用户激活数信息', '将用户激活数数据同步至运行态势分析平台', '提升数据分析时效性，丰富数据分析维度', '为精准洞察用户行为模式、评估平台使用效果提供数据支撑', '支持查看用户激活数的详细数据'], accept: '用户激活数信息从赣政通信创版底座同步获取，数据展示正确，支持查看详情' },
     { id: 'sys-app-alert', title: '对接应用强提醒统计信息', rules: ['从"赣政通"平台信创版底座获取应用强提醒统计信息', '将应用强提醒统计数据同步至运行态势分析平台', '提升数据分析时效性，丰富数据分析维度', '为精准洞察用户行为模式、评估平台使用效果提供数据支撑', '支持查看应用强提醒统计的详细数据'], accept: '应用强提醒统计信息从赣政通信创版底座同步获取，数据展示正确，支持查看详情' },
@@ -1998,7 +2110,8 @@ function renderDescriptions(pageKey) {
     'page-dict': '字典管理',
     'page-notice': '通知公告管理',
     'page-log': '日志管理',
-    'page-param': '参数管理'
+    'page-param': '参数管理',
+    'page-icon': '图标管理'
   };
   titleEl.textContent = pageTitles[pageKey] || '功能说明';
   
