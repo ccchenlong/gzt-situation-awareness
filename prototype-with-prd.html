@@ -27,12 +27,21 @@ a:hover { color: #66b1ff; }
   font-size: 18px;
 }
 .sidebar-menu { padding: 8px 0; }
+.menu-group-title {
+  height: 36px; display: flex; align-items: center; padding: 0 20px; color: rgba(255,255,255,.45);
+  font-size: 12px; font-weight: 500; cursor: pointer; user-select: none;
+  justify-content: space-between; transition: color .2s;
+}
+.menu-group-title:hover { color: rgba(255,255,255,.7); }
+.menu-group-title .arrow { font-size: 10px; transition: transform .2s; }
+.menu-group-title.collapsed .arrow { transform: rotate(-90deg); }
 .menu-item {
-  height: 44px; display: flex; align-items: center; padding: 0 20px; color: rgba(255,255,255,.7);
-  cursor: pointer; transition: all .2s; white-space: nowrap;
+  height: 40px; display: flex; align-items: center; padding: 0 20px 0 40px; color: rgba(255,255,255,.7);
+  cursor: pointer; transition: all .2s; white-space: nowrap; font-size: 13px;
 }
 .menu-item:hover, .menu-item.active { background: #1890ff; color: #fff; }
-.menu-item i { margin-right: 10px; font-size: 16px; width: 18px; text-align: center; }
+.menu-item i { margin-right: 10px; font-size: 14px; width: 16px; text-align: center; }
+.menu-group { overflow: hidden; transition: max-height .3s; }
 .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; }
 .topbar {
   height: 60px; background: #fff; border-bottom: 1px solid #e4e7ed;
@@ -430,35 +439,50 @@ select.el-select { min-width: 120px; }
   <aside class="sidebar">
     <div class="sidebar-logo"><div class="sidebar-logo-icon">&#9733;</div>态势感知管理系统</div>
     <div class="sidebar-menu">
-      <div class="menu-item active" data-page="page-extract-config" onclick="showPage('page-extract-config')">
-        <i>&#9679;</i><span>数据转换提取配置</span>
+      <div class="menu-group-title" onclick="toggleMenuGroup(this)">
+        <span>数据治理</span><span class="arrow">▼</span>
       </div>
-      <div class="menu-item" data-page="page-model" onclick="showPage('page-model')">
-        <i>&#9679;</i><span>数据模型管理</span>
+      <div class="menu-group">
+        <div class="menu-item active" data-page="page-extract-config" onclick="showPage('page-extract-config')">
+          <i>&#9679;</i><span>数据转换提取配置</span>
+        </div>
+        <div class="menu-item" data-page="page-model" onclick="showPage('page-model')">
+          <i>&#9679;</i><span>数据模型管理</span>
+        </div>
+        <div class="menu-item" data-page="page-query" onclick="showPage('page-query')">
+          <i>&#9679;</i><span>数据查询</span>
+        </div>
+        <div class="menu-item" data-page="page-chart" onclick="showPage('page-chart')">
+          <i>&#9679;</i><span>数据图表管理</span>
+        </div>
+        <div class="menu-item" data-page="page-filter" onclick="showPage('page-filter')">
+          <i>&#9679;</i><span>数据过滤</span>
+        </div>
       </div>
-      <div class="menu-item" data-page="page-chart" onclick="showPage('page-chart')">
-        <i>&#9679;</i><span>数据图表管理</span>
+      <div class="menu-group-title" onclick="toggleMenuGroup(this)">
+        <span>系统对接</span><span class="arrow">▼</span>
       </div>
-      <div class="menu-item" data-page="page-query" onclick="showPage('page-query')">
-        <i>&#9679;</i><span>数据查询</span>
+      <div class="menu-group">
+        <div class="menu-item" data-page="page-system" onclick="showPage('page-system')">
+          <i>&#9679;</i><span>活跃度统计</span>
+        </div>
       </div>
-      <div class="menu-item" data-page="page-filter" onclick="showPage('page-filter')">
-        <i>&#9679;</i><span>数据过滤</span>
+      <div class="menu-group-title" onclick="toggleMenuGroup(this)">
+        <span>系统管理</span><span class="arrow">▼</span>
       </div>
-      <div class="menu-item" data-page="page-dict" onclick="showPage('page-dict')">
-        <i>&#9679;</i><span>字典管理</span>
-      </div>
-      <div class="menu-item" data-page="page-notice" onclick="showPage('page-notice')">
-        <i>&#9679;</i><span>通知公告管理</span>
-      </div>
-      <div class="menu-item" data-page="page-log" onclick="showPage('page-log')">
-        <i>&#9679;</i><span>日志管理</span>
-      </div>
-      <div class="menu-item" data-page="page-param" onclick="showPage('page-param')">
-        <i>&#9679;</i><span>参数管理</span>
-      </div>
-      <div class="menu-item" data-page="page-system" onclick="showPage('page-system')">
-        <i>&#9679;</i><span>系统对接</span>
+      <div class="menu-group">
+        <div class="menu-item" data-page="page-dict" onclick="showPage('page-dict')">
+          <i>&#9679;</i><span>字典管理</span>
+        </div>
+        <div class="menu-item" data-page="page-notice" onclick="showPage('page-notice')">
+          <i>&#9679;</i><span>通知公告</span>
+        </div>
+        <div class="menu-item" data-page="page-log" onclick="showPage('page-log')">
+          <i>&#9679;</i><span>审计日志</span>
+        </div>
+        <div class="menu-item" data-page="page-param" onclick="showPage('page-param')">
+          <i>&#9679;</i><span>参数管理</span>
+        </div>
       </div>
     </div>
   </aside>
@@ -1539,6 +1563,21 @@ function showPage(id){
   document.querySelector('.menu-item[data-page="'+id+'"]').classList.add('active');
   if (typeof updateComparePage === 'function') { updateComparePage(id); }
 }
+function toggleMenuGroup(el){
+  var group = el.nextElementSibling;
+  el.classList.toggle('collapsed');
+  if (group.style.maxHeight && group.style.maxHeight !== '0px') {
+    group.style.maxHeight = '0px';
+  } else {
+    group.style.maxHeight = group.scrollHeight + 'px';
+  }
+}
+// 初始化菜单展开状态
+window.addEventListener('load', function(){
+  document.querySelectorAll('.menu-group').forEach(function(g){
+    g.style.maxHeight = g.scrollHeight + 'px';
+  });
+});
 function showTab(page, tab){
   var sec=document.getElementById(page);
   sec.querySelectorAll('.tab-panel').forEach(p=>p.classList.remove('active'));
