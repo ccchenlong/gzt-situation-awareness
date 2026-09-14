@@ -311,6 +311,106 @@ select.el-select { min-width: 120px; }
   50% { transform: scale(1.2); box-shadow: 0 2px 12px rgba(245,108,108,0.6); }
 }
 
+/* 图表看板 */
+.chart-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+}
+.chart-card {
+  border: 1px solid #ebeef5;
+  border-radius: 4px;
+  background: #fff;
+}
+.chart-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 12px;
+  border-bottom: 1px solid #ebeef5;
+  font-size: 13px;
+  font-weight: 500;
+  color: #303133;
+}
+.chart-card-title { font-size: 13px; }
+.btn-mini {
+  padding: 3px 8px;
+  font-size: 12px;
+  border: 1px solid #dcdfe6;
+  background: #fff;
+  color: #606266;
+  border-radius: 3px;
+  cursor: pointer;
+}
+.chart-card-body {
+  padding: 16px;
+  height: 200px;
+  display: flex;
+  flex-direction: column;
+}
+.mini-chart {
+  flex: 1;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-around;
+  padding: 10px 0;
+}
+.bar-chart .chart-bar {
+  width: 24px;
+  background: linear-gradient(to top, #409eff, #66b1ff);
+  border-radius: 3px 3px 0 0;
+}
+.chart-xaxis {
+  display: flex;
+  justify-content: space-around;
+  font-size: 11px;
+  color: #909399;
+  padding-top: 4px;
+}
+.pie-chart {
+  align-items: center;
+  justify-content: center;
+}
+.pie {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+}
+.bar-chart.horizontal {
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: stretch;
+  gap: 8px;
+}
+.h-bar-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+}
+.h-bar-label {
+  width: 60px;
+  color: #606266;
+  text-align: right;
+  flex-shrink: 0;
+}
+.h-bar {
+  flex: 1;
+  height: 16px;
+  background: linear-gradient(to right, #409eff, #66b1ff);
+  border-radius: 0 3px 3px 0;
+}
+.h-bar-value {
+  width: 40px;
+  color: #909399;
+  text-align: right;
+  flex-shrink: 0;
+}
+.line-chart {
+  align-items: stretch;
+  justify-content: center;
+}
+
 /* 响应式 */
 @media (max-width: 768px) {
   .compare-container { flex-direction: column; }
@@ -425,42 +525,335 @@ select.el-select { min-width: 120px; }
 </div><table class="data-table"><thead><tr><th><input type="checkbox"></th><th>模型编码</th><th>模型名称</th><th>数据源</th><th>字段数</th><th>版本</th><th>状态</th><th>创建时间</th><th>操作</th></tr></thead><tbody><tr><td><input type="checkbox"></td><td>MDLMO001</td><td>行为统计模型1</td><td>数据中心</td><td>9</td><td>v1.0</td><td><label class="switch"><input type="checkbox" ><span class="slider"></span></label></td><td>2024-08-11 10:01</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="openDialog('查看详情','view-detail')">查看</a> <a onclick="openDialog('修改记录','modify-record')">修改记录</a></td></tr><tr><td><input type="checkbox"></td><td>MDLMO002</td><td>行为统计模型2</td><td>数据中心</td><td>10</td><td>v1.0</td><td><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></td><td>2024-08-12 10:02</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="openDialog('查看详情','view-detail')">查看</a> <a onclick="openDialog('修改记录','modify-record')">修改记录</a></td></tr><tr><td><input type="checkbox"></td><td>MDLMO003</td><td>行为统计模型3</td><td>数据中心</td><td>11</td><td>v1.0</td><td><label class="switch"><input type="checkbox" ><span class="slider"></span></label></td><td>2024-08-13 10:03</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="openDialog('查看详情','view-detail')">查看</a> <a onclick="openDialog('修改记录','modify-record')">修改记录</a></td></tr><tr><td><input type="checkbox"></td><td>MDLMO004</td><td>行为统计模型4</td><td>数据中心</td><td>12</td><td>v1.0</td><td><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></td><td>2024-08-14 10:04</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="openDialog('查看详情','view-detail')">查看</a> <a onclick="openDialog('修改记录','modify-record')">修改记录</a></td></tr><tr><td><input type="checkbox"></td><td>MDLMO005</td><td>行为统计模型5</td><td>数据中心</td><td>8</td><td>v1.0</td><td><label class="switch"><input type="checkbox" ><span class="slider"></span></label></td><td>2024-08-15 10:05</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="openDialog('查看详情','view-detail')">查看</a> <a onclick="openDialog('修改记录','modify-record')">修改记录</a></td></tr><tr><td><input type="checkbox"></td><td>MDLMO006</td><td>行为统计模型6</td><td>数据中心</td><td>9</td><td>v1.0</td><td><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></td><td>2024-08-16 10:06</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="openDialog('查看详情','view-detail')">查看</a> <a onclick="openDialog('修改记录','modify-record')">修改记录</a></td></tr><tr><td><input type="checkbox"></td><td>MDLMO007</td><td>行为统计模型7</td><td>数据中心</td><td>10</td><td>v1.0</td><td><label class="switch"><input type="checkbox" ><span class="slider"></span></label></td><td>2024-08-17 10:07</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="openDialog('查看详情','view-detail')">查看</a> <a onclick="openDialog('修改记录','modify-record')">修改记录</a></td></tr><tr><td><input type="checkbox"></td><td>MDLMO008</td><td>行为统计模型8</td><td>数据中心</td><td>11</td><td>v1.0</td><td><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></td><td>2024-08-18 10:08</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="openDialog('查看详情','view-detail')">查看</a> <a onclick="openDialog('修改记录','modify-record')">修改记录</a></td></tr><tr><td><input type="checkbox"></td><td>MDLMO009</td><td>行为统计模型9</td><td>数据中心</td><td>12</td><td>v1.0</td><td><label class="switch"><input type="checkbox" ><span class="slider"></span></label></td><td>2024-08-19 10:09</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="openDialog('查看详情','view-detail')">查看</a> <a onclick="openDialog('修改记录','modify-record')">修改记录</a></td></tr></tbody></table><div class="pagination">
   <button>&lt;</button><button class="active">1</button><button>2</button><button>3</button><button>&gt;</button>
 </div></div></div></div></section>
-<section id="page-chart" class="page-section"><div class="card"><div class="card-body"><div class="topbar-left" style="margin-bottom:16px;font-size:16px;">数据图表管理</div><div class="tabs"><div class="tab-item active" data-tab="tab-user-viz" onclick="showTab('page-chart','tab-user-viz')">用户统计可视化</div><div class="tab-item " data-tab="tab-todo-viz" onclick="showTab('page-chart','tab-todo-viz')">待办统计可视化</div><div class="tab-item " data-tab="tab-app-viz" onclick="showTab('page-chart','tab-app-viz')">应用统计可视化</div><div class="tab-item " data-tab="tab-behavior-viz" onclick="showTab('page-chart','tab-behavior-viz')">行为统计可视化</div></div><div id="tab-user-viz" class="tab-panel active"><div class="filter-bar">
-<div class="form-item"><label>图表名称</label><input class="el-input" name="name" placeholder="请输入图表名称"></div>
-<div class="form-item"><label>图表类型</label><select class="el-select" name="type"><option value="全部">全部</option><option value="折线">折线</option><option value="柱状">柱状</option><option value="饼图">饼图</option><option value="面积图">面积图</option></select></div>
-</div><div class="toolbar">
-  <div class="btn-group"><button class="btn btn-primary" onclick="openDialog('新增可视化模板','chart-add')">+ 新增</button> <button class="btn btn-danger" onclick="openDialog('批量删除确认','batch-delete-confirm')">批量删除</button> <button class="btn btn-success" onclick="openDialog('导出配置','export-config')">导出</button> <button class="btn btn-info" onclick="showToast('复制成功')">复制</button> <button class="btn btn-warning" onclick="openDialog('版本管理','version')">版本</button> <button class="btn " onclick="openDialog('修改记录','modify-record')">修改记录</button> <button class="btn " onclick="showToast('刷新成功')">刷新</button></div>
-  <div style="color:#909399;font-size:13px;">共 <span class="total-num">0</span> 条</div>
-</div><table class="data-table"><thead><tr><th><input type="checkbox"></th><th>图表编码</th><th>图表名称</th><th>图表类型</th><th>数据源</th><th>刷新周期</th><th>维度配置</th><th>指标配置</th><th>过滤条件</th><th>样式配置</th><th>状态</th><th>创建时间</th><th>操作</th></tr></thead><tbody><tr><td><input type="checkbox"></td><td>VIZVIZ001</td><td>用户统计可视化1</td><td>柱状图</td><td>数据中心</td><td>5分钟</td><td>已配置 <a onclick="openDialog('维度配置','chart-dimension')">查看</a></td><td>已配置 <a onclick="openDialog('指标配置','chart-metric')">查看</a></td><td>已配置 <a onclick="openDialog('过滤条件','chart-filter')">查看</a></td><td>已配置 <a onclick="openDialog('样式配置','chart-style')">查看</a></td><td><label class="switch"><input type="checkbox" ><span class="slider"></span></label></td><td>2024-09-01 09:00</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="showToast('复制成功')">复制</a> <a onclick="openDialog('数据预览','preview')">预览</a></td></tr><tr><td><input type="checkbox"></td><td>VIZVIZ002</td><td>用户统计可视化2</td><td>饼图</td><td>数据中心</td><td>10分钟</td><td>已配置 <a onclick="openDialog('维度配置','chart-dimension')">查看</a></td><td>已配置 <a onclick="openDialog('指标配置','chart-metric')">查看</a></td><td>已配置 <a onclick="openDialog('过滤条件','chart-filter')">查看</a></td><td>已配置 <a onclick="openDialog('样式配置','chart-style')">查看</a></td><td><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></td><td>2024-09-02 09:00</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="showToast('复制成功')">复制</a> <a onclick="openDialog('数据预览','preview')">预览</a></td></tr><tr><td><input type="checkbox"></td><td>VIZVIZ003</td><td>用户统计可视化3</td><td>面积图</td><td>数据中心</td><td>15分钟</td><td>已配置 <a onclick="openDialog('维度配置','chart-dimension')">查看</a></td><td>已配置 <a onclick="openDialog('指标配置','chart-metric')">查看</a></td><td>已配置 <a onclick="openDialog('过滤条件','chart-filter')">查看</a></td><td>已配置 <a onclick="openDialog('样式配置','chart-style')">查看</a></td><td><label class="switch"><input type="checkbox" ><span class="slider"></span></label></td><td>2024-09-03 09:00</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="showToast('复制成功')">复制</a> <a onclick="openDialog('数据预览','preview')">预览</a></td></tr><tr><td><input type="checkbox"></td><td>VIZVIZ004</td><td>用户统计可视化4</td><td>折线图</td><td>数据中心</td><td>20分钟</td><td>已配置 <a onclick="openDialog('维度配置','chart-dimension')">查看</a></td><td>已配置 <a onclick="openDialog('指标配置','chart-metric')">查看</a></td><td>已配置 <a onclick="openDialog('过滤条件','chart-filter')">查看</a></td><td>已配置 <a onclick="openDialog('样式配置','chart-style')">查看</a></td><td><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></td><td>2024-09-04 09:00</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="showToast('复制成功')">复制</a> <a onclick="openDialog('数据预览','preview')">预览</a></td></tr><tr><td><input type="checkbox"></td><td>VIZVIZ005</td><td>用户统计可视化5</td><td>柱状图</td><td>数据中心</td><td>25分钟</td><td>已配置 <a onclick="openDialog('维度配置','chart-dimension')">查看</a></td><td>已配置 <a onclick="openDialog('指标配置','chart-metric')">查看</a></td><td>已配置 <a onclick="openDialog('过滤条件','chart-filter')">查看</a></td><td>已配置 <a onclick="openDialog('样式配置','chart-style')">查看</a></td><td><label class="switch"><input type="checkbox" ><span class="slider"></span></label></td><td>2024-09-05 09:00</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="showToast('复制成功')">复制</a> <a onclick="openDialog('数据预览','preview')">预览</a></td></tr></tbody></table><div class="pagination">
-  <button>&lt;</button><button class="active">1</button><button>2</button><button>3</button><button>&gt;</button>
-</div></div>
-<div id="tab-todo-viz" class="tab-panel"><div class="filter-bar">
-<div class="form-item"><label>图表名称</label><input class="el-input" name="name" placeholder="请输入图表名称"></div>
-<div class="form-item"><label>图表类型</label><select class="el-select" name="type"><option value="全部">全部</option><option value="折线">折线</option><option value="柱状">柱状</option><option value="饼图">饼图</option><option value="面积图">面积图</option></select></div>
-</div><div class="toolbar">
-  <div class="btn-group"><button class="btn btn-primary" onclick="openDialog('新增可视化模板','chart-add')">+ 新增</button> <button class="btn btn-danger" onclick="openDialog('批量删除确认','batch-delete-confirm')">批量删除</button> <button class="btn btn-success" onclick="openDialog('导出配置','export-config')">导出</button> <button class="btn btn-info" onclick="showToast('复制成功')">复制</button> <button class="btn btn-warning" onclick="openDialog('版本管理','version')">版本</button> <button class="btn " onclick="openDialog('修改记录','modify-record')">修改记录</button> <button class="btn" onclick="openDialog('数据源配置','view-datasource')">数据源</button> <button class="btn " onclick="showToast('刷新成功')">刷新</button></div>
-  <div style="color:#909399;font-size:13px;">共 <span class="total-num">0</span> 条</div>
-</div><table class="data-table"><thead><tr><th><input type="checkbox"></th><th>图表编码</th><th>图表名称</th><th>图表类型</th><th>数据源</th><th>刷新周期</th><th>维度配置</th><th>指标配置</th><th>过滤条件</th><th>样式配置</th><th>状态</th><th>创建时间</th><th>操作</th></tr></thead><tbody><tr><td><input type="checkbox"></td><td>VIZVIZ001</td><td>待办统计可视化1</td><td>柱状图</td><td>数据中心</td><td>5分钟</td><td>已配置 <a onclick="openDialog('维度配置','chart-dimension')">查看</a></td><td>已配置 <a onclick="openDialog('指标配置','chart-metric')">查看</a></td><td>已配置 <a onclick="openDialog('过滤条件','chart-filter')">查看</a></td><td>已配置 <a onclick="openDialog('样式配置','chart-style')">查看</a></td><td><label class="switch"><input type="checkbox" ><span class="slider"></span></label></td><td>2024-09-01 09:00</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="showToast('复制成功')">复制</a> <a onclick="openDialog('数据预览','preview')">预览</a></td></tr><tr><td><input type="checkbox"></td><td>VIZVIZ002</td><td>待办统计可视化2</td><td>饼图</td><td>数据中心</td><td>10分钟</td><td>已配置 <a onclick="openDialog('维度配置','chart-dimension')">查看</a></td><td>已配置 <a onclick="openDialog('指标配置','chart-metric')">查看</a></td><td>已配置 <a onclick="openDialog('过滤条件','chart-filter')">查看</a></td><td>已配置 <a onclick="openDialog('样式配置','chart-style')">查看</a></td><td><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></td><td>2024-09-02 09:00</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="showToast('复制成功')">复制</a> <a onclick="openDialog('数据预览','preview')">预览</a></td></tr><tr><td><input type="checkbox"></td><td>VIZVIZ003</td><td>待办统计可视化3</td><td>面积图</td><td>数据中心</td><td>15分钟</td><td>已配置 <a onclick="openDialog('维度配置','chart-dimension')">查看</a></td><td>已配置 <a onclick="openDialog('指标配置','chart-metric')">查看</a></td><td>已配置 <a onclick="openDialog('过滤条件','chart-filter')">查看</a></td><td>已配置 <a onclick="openDialog('样式配置','chart-style')">查看</a></td><td><label class="switch"><input type="checkbox" ><span class="slider"></span></label></td><td>2024-09-03 09:00</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="showToast('复制成功')">复制</a> <a onclick="openDialog('数据预览','preview')">预览</a></td></tr><tr><td><input type="checkbox"></td><td>VIZVIZ004</td><td>待办统计可视化4</td><td>折线图</td><td>数据中心</td><td>20分钟</td><td>已配置 <a onclick="openDialog('维度配置','chart-dimension')">查看</a></td><td>已配置 <a onclick="openDialog('指标配置','chart-metric')">查看</a></td><td>已配置 <a onclick="openDialog('过滤条件','chart-filter')">查看</a></td><td>已配置 <a onclick="openDialog('样式配置','chart-style')">查看</a></td><td><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></td><td>2024-09-04 09:00</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="showToast('复制成功')">复制</a> <a onclick="openDialog('数据预览','preview')">预览</a></td></tr><tr><td><input type="checkbox"></td><td>VIZVIZ005</td><td>待办统计可视化5</td><td>柱状图</td><td>数据中心</td><td>25分钟</td><td>已配置 <a onclick="openDialog('维度配置','chart-dimension')">查看</a></td><td>已配置 <a onclick="openDialog('指标配置','chart-metric')">查看</a></td><td>已配置 <a onclick="openDialog('过滤条件','chart-filter')">查看</a></td><td>已配置 <a onclick="openDialog('样式配置','chart-style')">查看</a></td><td><label class="switch"><input type="checkbox" ><span class="slider"></span></label></td><td>2024-09-05 09:00</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="showToast('复制成功')">复制</a> <a onclick="openDialog('数据预览','preview')">预览</a></td></tr><tr><td><input type="checkbox"></td><td>VIZVIZ006</td><td>待办统计可视化6</td><td>饼图</td><td>数据中心</td><td>30分钟</td><td>已配置 <a onclick="openDialog('维度配置','chart-dimension')">查看</a></td><td>已配置 <a onclick="openDialog('指标配置','chart-metric')">查看</a></td><td>已配置 <a onclick="openDialog('过滤条件','chart-filter')">查看</a></td><td>已配置 <a onclick="openDialog('样式配置','chart-style')">查看</a></td><td><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></td><td>2024-09-06 09:00</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="showToast('复制成功')">复制</a> <a onclick="openDialog('数据预览','preview')">预览</a></td></tr></tbody></table><div class="pagination">
-  <button>&lt;</button><button class="active">1</button><button>2</button><button>3</button><button>&gt;</button>
-</div></div>
-<div id="tab-app-viz" class="tab-panel"><div class="filter-bar">
-<div class="form-item"><label>图表名称</label><input class="el-input" name="name" placeholder="请输入图表名称"></div>
-<div class="form-item"><label>图表类型</label><select class="el-select" name="type"><option value="全部">全部</option><option value="折线">折线</option><option value="柱状">柱状</option><option value="饼图">饼图</option><option value="面积图">面积图</option></select></div>
-</div><div class="toolbar">
-  <div class="btn-group"><button class="btn btn-primary" onclick="openDialog('新增可视化模板','chart-add')">+ 新增</button> <button class="btn btn-danger" onclick="openDialog('批量删除确认','batch-delete-confirm')">批量删除</button> <button class="btn btn-success" onclick="openDialog('导出配置','export-config')">导出</button> <button class="btn btn-info" onclick="showToast('复制成功')">复制</button> <button class="btn btn-warning" onclick="openDialog('版本管理','version')">版本</button> <button class="btn " onclick="openDialog('修改记录','modify-record')">修改记录</button> <button class="btn " onclick="showToast('刷新成功')">刷新</button></div>
-  <div style="color:#909399;font-size:13px;">共 <span class="total-num">0</span> 条</div>
-</div><table class="data-table"><thead><tr><th><input type="checkbox"></th><th>图表编码</th><th>图表名称</th><th>图表类型</th><th>数据源</th><th>刷新周期</th><th>维度配置</th><th>指标配置</th><th>过滤条件</th><th>样式配置</th><th>状态</th><th>创建时间</th><th>操作</th></tr></thead><tbody><tr><td><input type="checkbox"></td><td>VIZVIZ001</td><td>应用统计可视化1</td><td>柱状图</td><td>数据中心</td><td>5分钟</td><td>已配置 <a onclick="openDialog('维度配置','chart-dimension')">查看</a></td><td>已配置 <a onclick="openDialog('指标配置','chart-metric')">查看</a></td><td>已配置 <a onclick="openDialog('过滤条件','chart-filter')">查看</a></td><td>已配置 <a onclick="openDialog('样式配置','chart-style')">查看</a></td><td><label class="switch"><input type="checkbox" ><span class="slider"></span></label></td><td>2024-09-01 09:00</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="showToast('复制成功')">复制</a> <a onclick="openDialog('数据预览','preview')">预览</a></td></tr><tr><td><input type="checkbox"></td><td>VIZVIZ002</td><td>应用统计可视化2</td><td>饼图</td><td>数据中心</td><td>10分钟</td><td>已配置 <a onclick="openDialog('维度配置','chart-dimension')">查看</a></td><td>已配置 <a onclick="openDialog('指标配置','chart-metric')">查看</a></td><td>已配置 <a onclick="openDialog('过滤条件','chart-filter')">查看</a></td><td>已配置 <a onclick="openDialog('样式配置','chart-style')">查看</a></td><td><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></td><td>2024-09-02 09:00</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="showToast('复制成功')">复制</a> <a onclick="openDialog('数据预览','preview')">预览</a></td></tr><tr><td><input type="checkbox"></td><td>VIZVIZ003</td><td>应用统计可视化3</td><td>面积图</td><td>数据中心</td><td>15分钟</td><td>已配置 <a onclick="openDialog('维度配置','chart-dimension')">查看</a></td><td>已配置 <a onclick="openDialog('指标配置','chart-metric')">查看</a></td><td>已配置 <a onclick="openDialog('过滤条件','chart-filter')">查看</a></td><td>已配置 <a onclick="openDialog('样式配置','chart-style')">查看</a></td><td><label class="switch"><input type="checkbox" ><span class="slider"></span></label></td><td>2024-09-03 09:00</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="showToast('复制成功')">复制</a> <a onclick="openDialog('数据预览','preview')">预览</a></td></tr><tr><td><input type="checkbox"></td><td>VIZVIZ004</td><td>应用统计可视化4</td><td>折线图</td><td>数据中心</td><td>20分钟</td><td>已配置 <a onclick="openDialog('维度配置','chart-dimension')">查看</a></td><td>已配置 <a onclick="openDialog('指标配置','chart-metric')">查看</a></td><td>已配置 <a onclick="openDialog('过滤条件','chart-filter')">查看</a></td><td>已配置 <a onclick="openDialog('样式配置','chart-style')">查看</a></td><td><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></td><td>2024-09-04 09:00</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="showToast('复制成功')">复制</a> <a onclick="openDialog('数据预览','preview')">预览</a></td></tr><tr><td><input type="checkbox"></td><td>VIZVIZ005</td><td>应用统计可视化5</td><td>柱状图</td><td>数据中心</td><td>25分钟</td><td>已配置 <a onclick="openDialog('维度配置','chart-dimension')">查看</a></td><td>已配置 <a onclick="openDialog('指标配置','chart-metric')">查看</a></td><td>已配置 <a onclick="openDialog('过滤条件','chart-filter')">查看</a></td><td>已配置 <a onclick="openDialog('样式配置','chart-style')">查看</a></td><td><label class="switch"><input type="checkbox" ><span class="slider"></span></label></td><td>2024-09-05 09:00</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="showToast('复制成功')">复制</a> <a onclick="openDialog('数据预览','preview')">预览</a></td></tr><tr><td><input type="checkbox"></td><td>VIZVIZ006</td><td>应用统计可视化6</td><td>饼图</td><td>数据中心</td><td>30分钟</td><td>已配置 <a onclick="openDialog('维度配置','chart-dimension')">查看</a></td><td>已配置 <a onclick="openDialog('指标配置','chart-metric')">查看</a></td><td>已配置 <a onclick="openDialog('过滤条件','chart-filter')">查看</a></td><td>已配置 <a onclick="openDialog('样式配置','chart-style')">查看</a></td><td><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></td><td>2024-09-06 09:00</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="showToast('复制成功')">复制</a> <a onclick="openDialog('数据预览','preview')">预览</a></td></tr><tr><td><input type="checkbox"></td><td>VIZVIZ007</td><td>应用统计可视化7</td><td>面积图</td><td>数据中心</td><td>35分钟</td><td>已配置 <a onclick="openDialog('维度配置','chart-dimension')">查看</a></td><td>已配置 <a onclick="openDialog('指标配置','chart-metric')">查看</a></td><td>已配置 <a onclick="openDialog('过滤条件','chart-filter')">查看</a></td><td>已配置 <a onclick="openDialog('样式配置','chart-style')">查看</a></td><td><label class="switch"><input type="checkbox" ><span class="slider"></span></label></td><td>2024-09-07 09:00</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="showToast('复制成功')">复制</a> <a onclick="openDialog('数据预览','preview')">预览</a></td></tr></tbody></table><div class="pagination">
-  <button>&lt;</button><button class="active">1</button><button>2</button><button>3</button><button>&gt;</button>
-</div></div>
-<div id="tab-behavior-viz" class="tab-panel"><div class="filter-bar">
-<div class="form-item"><label>图表名称</label><input class="el-input" name="name" placeholder="请输入图表名称"></div>
-<div class="form-item"><label>图表类型</label><select class="el-select" name="type"><option value="全部">全部</option><option value="折线">折线</option><option value="柱状">柱状</option><option value="饼图">饼图</option><option value="面积图">面积图</option></select></div>
-</div><div class="toolbar">
-  <div class="btn-group"><button class="btn btn-primary" onclick="openDialog('新增可视化模板','chart-add')">+ 新增</button> <button class="btn btn-danger" onclick="openDialog('批量删除确认','batch-delete-confirm')">批量删除</button> <button class="btn btn-success" onclick="openDialog('导出配置','export-config')">导出</button> <button class="btn btn-info" onclick="showToast('复制成功')">复制</button> <button class="btn btn-warning" onclick="openDialog('版本管理','version')">版本</button> <button class="btn " onclick="openDialog('修改记录','modify-record')">修改记录</button> <button class="btn " onclick="showToast('刷新成功')">刷新</button></div>
-  <div style="color:#909399;font-size:13px;">共 <span class="total-num">0</span> 条</div>
-</div><table class="data-table"><thead><tr><th><input type="checkbox"></th><th>图表编码</th><th>图表名称</th><th>图表类型</th><th>数据源</th><th>刷新周期</th><th>维度配置</th><th>指标配置</th><th>过滤条件</th><th>样式配置</th><th>状态</th><th>创建时间</th><th>操作</th></tr></thead><tbody><tr><td><input type="checkbox"></td><td>VIZVIZ001</td><td>行为统计可视化1</td><td>柱状图</td><td>数据中心</td><td>5分钟</td><td>已配置 <a onclick="openDialog('维度配置','chart-dimension')">查看</a></td><td>已配置 <a onclick="openDialog('指标配置','chart-metric')">查看</a></td><td>已配置 <a onclick="openDialog('过滤条件','chart-filter')">查看</a></td><td>已配置 <a onclick="openDialog('样式配置','chart-style')">查看</a></td><td><label class="switch"><input type="checkbox" ><span class="slider"></span></label></td><td>2024-09-01 09:00</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="showToast('复制成功')">复制</a> <a onclick="openDialog('数据预览','preview')">预览</a></td></tr><tr><td><input type="checkbox"></td><td>VIZVIZ002</td><td>行为统计可视化2</td><td>饼图</td><td>数据中心</td><td>10分钟</td><td>已配置 <a onclick="openDialog('维度配置','chart-dimension')">查看</a></td><td>已配置 <a onclick="openDialog('指标配置','chart-metric')">查看</a></td><td>已配置 <a onclick="openDialog('过滤条件','chart-filter')">查看</a></td><td>已配置 <a onclick="openDialog('样式配置','chart-style')">查看</a></td><td><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></td><td>2024-09-02 09:00</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="showToast('复制成功')">复制</a> <a onclick="openDialog('数据预览','preview')">预览</a></td></tr><tr><td><input type="checkbox"></td><td>VIZVIZ003</td><td>行为统计可视化3</td><td>面积图</td><td>数据中心</td><td>15分钟</td><td>已配置 <a onclick="openDialog('维度配置','chart-dimension')">查看</a></td><td>已配置 <a onclick="openDialog('指标配置','chart-metric')">查看</a></td><td>已配置 <a onclick="openDialog('过滤条件','chart-filter')">查看</a></td><td>已配置 <a onclick="openDialog('样式配置','chart-style')">查看</a></td><td><label class="switch"><input type="checkbox" ><span class="slider"></span></label></td><td>2024-09-03 09:00</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="showToast('复制成功')">复制</a> <a onclick="openDialog('数据预览','preview')">预览</a></td></tr><tr><td><input type="checkbox"></td><td>VIZVIZ004</td><td>行为统计可视化4</td><td>折线图</td><td>数据中心</td><td>20分钟</td><td>已配置 <a onclick="openDialog('维度配置','chart-dimension')">查看</a></td><td>已配置 <a onclick="openDialog('指标配置','chart-metric')">查看</a></td><td>已配置 <a onclick="openDialog('过滤条件','chart-filter')">查看</a></td><td>已配置 <a onclick="openDialog('样式配置','chart-style')">查看</a></td><td><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></td><td>2024-09-04 09:00</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="showToast('复制成功')">复制</a> <a onclick="openDialog('数据预览','preview')">预览</a></td></tr><tr><td><input type="checkbox"></td><td>VIZVIZ005</td><td>行为统计可视化5</td><td>柱状图</td><td>数据中心</td><td>25分钟</td><td>已配置 <a onclick="openDialog('维度配置','chart-dimension')">查看</a></td><td>已配置 <a onclick="openDialog('指标配置','chart-metric')">查看</a></td><td>已配置 <a onclick="openDialog('过滤条件','chart-filter')">查看</a></td><td>已配置 <a onclick="openDialog('样式配置','chart-style')">查看</a></td><td><label class="switch"><input type="checkbox" ><span class="slider"></span></label></td><td>2024-09-05 09:00</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="showToast('复制成功')">复制</a> <a onclick="openDialog('数据预览','preview')">预览</a></td></tr><tr><td><input type="checkbox"></td><td>VIZVIZ006</td><td>行为统计可视化6</td><td>饼图</td><td>数据中心</td><td>30分钟</td><td>已配置 <a onclick="openDialog('维度配置','chart-dimension')">查看</a></td><td>已配置 <a onclick="openDialog('指标配置','chart-metric')">查看</a></td><td>已配置 <a onclick="openDialog('过滤条件','chart-filter')">查看</a></td><td>已配置 <a onclick="openDialog('样式配置','chart-style')">查看</a></td><td><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></td><td>2024-09-06 09:00</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="showToast('复制成功')">复制</a> <a onclick="openDialog('数据预览','preview')">预览</a></td></tr><tr><td><input type="checkbox"></td><td>VIZVIZ007</td><td>行为统计可视化7</td><td>面积图</td><td>数据中心</td><td>35分钟</td><td>已配置 <a onclick="openDialog('维度配置','chart-dimension')">查看</a></td><td>已配置 <a onclick="openDialog('指标配置','chart-metric')">查看</a></td><td>已配置 <a onclick="openDialog('过滤条件','chart-filter')">查看</a></td><td>已配置 <a onclick="openDialog('样式配置','chart-style')">查看</a></td><td><label class="switch"><input type="checkbox" ><span class="slider"></span></label></td><td>2024-09-07 09:00</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="showToast('复制成功')">复制</a> <a onclick="openDialog('数据预览','preview')">预览</a></td></tr><tr><td><input type="checkbox"></td><td>VIZVIZ008</td><td>行为统计可视化8</td><td>折线图</td><td>数据中心</td><td>40分钟</td><td>已配置 <a onclick="openDialog('维度配置','chart-dimension')">查看</a></td><td>已配置 <a onclick="openDialog('指标配置','chart-metric')">查看</a></td><td>已配置 <a onclick="openDialog('过滤条件','chart-filter')">查看</a></td><td>已配置 <a onclick="openDialog('样式配置','chart-style')">查看</a></td><td><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></td><td>2024-09-08 09:00</td><td><a onclick="openDialog('编辑','report-edit')">编辑</a> <a onclick="openDialog('删除确认','delete-confirm')">删除</a> <a onclick="showToast('复制成功')">复制</a> <a onclick="openDialog('数据预览','preview')">预览</a></td></tr></tbody></table><div class="pagination">
-  <button>&lt;</button><button class="active">1</button><button>2</button><button>3</button><button>&gt;</button>
-</div></div></div></div></section>
+<section id="page-chart" class="page-section"><div class="card"><div class="card-body"><div class="topbar-left" style="margin-bottom:16px;font-size:16px;">数据图表管理</div><div class="tabs"><div class="tab-item active" data-tab="tab-user-viz" onclick="showTab('page-chart','tab-user-viz')">用户统计可视化</div><div class="tab-item " data-tab="tab-todo-viz" onclick="showTab('page-chart','tab-todo-viz')">待办统计可视化</div><div class="tab-item " data-tab="tab-app-viz" onclick="showTab('page-chart','tab-app-viz')">应用统计可视化</div><div class="tab-item " data-tab="tab-behavior-viz" onclick="showTab('page-chart','tab-behavior-viz')">行为统计可视化</div></div><div id="tab-user-viz" class="tab-panel active">
+  <div style="margin-bottom:12px;font-size:14px;font-weight:500;color:#303133;">用户统计可视化配置</div>
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+    <select class="el-select" style="width:200px;"><option>测试2</option><option>用户总览看板</option><option>活跃度分析看板</option></select>
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="openDialog('新建看板','chart-new-dashboard')">+ 新建看板</button>
+      <button class="btn" onclick="openDialog('编辑看板','chart-edit-dashboard')">编辑</button>
+      <button class="btn btn-warning" onclick="showToast('已停用')">停用</button>
+      <button class="btn btn-danger" onclick="openDialog('删除确认','delete-confirm')">删除</button>
+      <button class="btn btn-success" onclick="openDialog('导出配置','export-config')">导出</button>
+      <button class="btn btn-info" onclick="openDialog('数据源配置','chart-datasource')">数据源配置</button>
+      <button class="btn btn-info" onclick="openDialog('指标配置','chart-metric')">指标配置</button>
+      <button class="btn" onclick="openDialog('刷新频率','chart-refresh-rate')">刷新频率</button>
+      <button class="btn" onclick="openDialog('样式配置','chart-style')">样式配置</button>
+      <button class="btn" onclick="openDialog('布局配置','chart-layout')">布局配置</button>
+      <button class="btn" onclick="openDialog('推送配置','chart-push')">推送配置</button>
+      <button class="btn" onclick="openDialog('权限配置','chart-permission')">权限配置</button>
+      <button class="btn" onclick="openDialog('公开链接','chart-public-link')">公开链接</button>
+    </div>
+  </div>
+  <div class="chart-grid">
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <span class="chart-card-title">用户激活趋势</span>
+        <button class="btn btn-mini" onclick="showToast('下载图片成功')">下载图片</button>
+      </div>
+      <div class="chart-card-body">
+        <div class="mini-chart bar-chart">
+          <div class="chart-bar" style="height:60%"></div>
+          <div class="chart-bar" style="height:75%"></div>
+          <div class="chart-bar" style="height:45%"></div>
+          <div class="chart-bar" style="height:85%"></div>
+          <div class="chart-bar" style="height:70%"></div>
+          <div class="chart-bar" style="height:90%"></div>
+          <div class="chart-bar" style="height:65%"></div>
+        </div>
+        <div class="chart-xaxis"><span>周一</span><span>周二</span><span>周三</span><span>周四</span><span>周五</span><span>周六</span><span>周日</span></div>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <span class="chart-card-title">部门用户分布</span>
+        <button class="btn btn-mini" onclick="showToast('下载图片成功')">下载图片</button>
+      </div>
+      <div class="chart-card-body">
+        <div class="mini-chart pie-chart">
+          <div class="pie" style="background: conic-gradient(#409eff 0% 35%, #67c23a 35% 60%, #e6a23c 60% 80%, #f56c6c 80% 100%);"></div>
+        </div>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <span class="chart-card-title">用户活跃度排行</span>
+        <button class="btn btn-mini" onclick="showToast('下载图片成功')">下载图片</button>
+      </div>
+      <div class="chart-card-body">
+        <div class="mini-chart bar-chart horizontal">
+          <div class="h-bar-row"><span class="h-bar-label">部门A</span><div class="h-bar" style="width:90%"></div><span class="h-bar-value">980</span></div>
+          <div class="h-bar-row"><span class="h-bar-label">部门B</span><div class="h-bar" style="width:75%"></div><span class="h-bar-value">820</span></div>
+          <div class="h-bar-row"><span class="h-bar-label">部门C</span><div class="h-bar" style="width:60%"></div><span class="h-bar-value">650</span></div>
+          <div class="h-bar-row"><span class="h-bar-label">部门D</span><div class="h-bar" style="width:45%"></div><span class="h-bar-value">490</span></div>
+          <div class="h-bar-row"><span class="h-bar-label">部门E</span><div class="h-bar" style="width:30%"></div><span class="h-bar-value">320</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <span class="chart-card-title">累计用户增长</span>
+        <button class="btn btn-mini" onclick="showToast('下载图片成功')">下载图片</button>
+      </div>
+      <div class="chart-card-body">
+        <div class="mini-chart line-chart">
+          <svg viewBox="0 0 200 80" style="width:100%;height:100%;">
+            <polyline points="0,60 30,50 60,55 90,40 120,35 150,25 180,20 200,15" fill="none" stroke="#409eff" stroke-width="2"/>
+            <polyline points="0,65 30,58 60,60 90,48 120,42 150,32 180,28 200,22" fill="none" stroke="#67c23a" stroke-width="2" stroke-dasharray="3,3"/>
+          </svg>
+        </div>
+        <div class="chart-xaxis"><span>1月</span><span>2月</span><span>3月</span><span>4月</span><span>5月</span><span>6月</span><span>7月</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="tab-todo-viz" class="tab-panel">
+  <div style="margin-bottom:12px;font-size:14px;font-weight:500;color:#303133;">待办统计可视化配置</div>
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+    <select class="el-select" style="width:200px;"><option>测试2</option><option>待办总览看板</option><option>办结率分析看板</option></select>
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="openDialog('新建看板','chart-new-dashboard')">+ 新建看板</button>
+      <button class="btn" onclick="openDialog('编辑看板','chart-edit-dashboard')">编辑</button>
+      <button class="btn btn-warning" onclick="showToast('已停用')">停用</button>
+      <button class="btn btn-danger" onclick="openDialog('删除确认','delete-confirm')">删除</button>
+      <button class="btn btn-success" onclick="openDialog('导出配置','export-config')">导出</button>
+      <button class="btn btn-info" onclick="openDialog('数据源配置','chart-datasource')">数据源配置</button>
+      <button class="btn btn-info" onclick="openDialog('指标配置','chart-metric')">指标配置</button>
+      <button class="btn" onclick="openDialog('刷新频率','chart-refresh-rate')">刷新频率</button>
+      <button class="btn" onclick="openDialog('样式配置','chart-style')">样式配置</button>
+      <button class="btn" onclick="openDialog('布局配置','chart-layout')">布局配置</button>
+      <button class="btn" onclick="openDialog('推送配置','chart-push')">推送配置</button>
+      <button class="btn" onclick="openDialog('权限配置','chart-permission')">权限配置</button>
+      <button class="btn" onclick="openDialog('公开链接','chart-public-link')">公开链接</button>
+    </div>
+  </div>
+  <div class="chart-grid">
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <span class="chart-card-title">待办办结趋势</span>
+        <button class="btn btn-mini" onclick="showToast('下载图片成功')">下载图片</button>
+      </div>
+      <div class="chart-card-body">
+        <div class="mini-chart bar-chart">
+          <div class="chart-bar" style="height:55%"></div>
+          <div class="chart-bar" style="height:70%"></div>
+          <div class="chart-bar" style="height:50%"></div>
+          <div class="chart-bar" style="height:80%"></div>
+          <div class="chart-bar" style="height:65%"></div>
+          <div class="chart-bar" style="height:85%"></div>
+          <div class="chart-bar" style="height:60%"></div>
+        </div>
+        <div class="chart-xaxis"><span>周一</span><span>周二</span><span>周三</span><span>周四</span><span>周五</span><span>周六</span><span>周日</span></div>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <span class="chart-card-title">待办状态分布</span>
+        <button class="btn btn-mini" onclick="showToast('下载图片成功')">下载图片</button>
+      </div>
+      <div class="chart-card-body">
+        <div class="mini-chart pie-chart">
+          <div class="pie" style="background: conic-gradient(#67c23a 0% 40%, #e6a23c 40% 65%, #f56c6c 65% 85%, #909399 85% 100%);"></div>
+        </div>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <span class="chart-card-title">部门待办量排行</span>
+        <button class="btn btn-mini" onclick="showToast('下载图片成功')">下载图片</button>
+      </div>
+      <div class="chart-card-body">
+        <div class="mini-chart bar-chart horizontal">
+          <div class="h-bar-row"><span class="h-bar-label">部门A</span><div class="h-bar" style="width:95%"></div><span class="h-bar-value">1250</span></div>
+          <div class="h-bar-row"><span class="h-bar-label">部门B</span><div class="h-bar" style="width:80%"></div><span class="h-bar-value">1050</span></div>
+          <div class="h-bar-row"><span class="h-bar-label">部门C</span><div class="h-bar" style="width:65%"></div><span class="h-bar-value">850</span></div>
+          <div class="h-bar-row"><span class="h-bar-label">部门D</span><div class="h-bar" style="width:50%"></div><span class="h-bar-value">660</span></div>
+          <div class="h-bar-row"><span class="h-bar-label">部门E</span><div class="h-bar" style="width:35%"></div><span class="h-bar-value">460</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <span class="chart-card-title">待办积压趋势</span>
+        <button class="btn btn-mini" onclick="showToast('下载图片成功')">下载图片</button>
+      </div>
+      <div class="chart-card-body">
+        <div class="mini-chart line-chart">
+          <svg viewBox="0 0 200 80" style="width:100%;height:100%;">
+            <polyline points="0,20 30,25 60,30 90,28 120,35 150,40 180,38 200,45" fill="none" stroke="#f56c6c" stroke-width="2"/>
+            <polyline points="0,50 30,48 60,45 90,42 120,38 150,35 180,32 200,30" fill="none" stroke="#67c23a" stroke-width="2" stroke-dasharray="3,3"/>
+          </svg>
+        </div>
+        <div class="chart-xaxis"><span>1月</span><span>2月</span><span>3月</span><span>4月</span><span>5月</span><span>6月</span><span>7月</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="tab-app-viz" class="tab-panel">
+  <div style="margin-bottom:12px;font-size:14px;font-weight:500;color:#303133;">应用统计可视化配置</div>
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+    <select class="el-select" style="width:200px;"><option>测试2</option><option>应用总览看板</option><option>使用率分析看板</option></select>
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="openDialog('新建看板','chart-new-dashboard')">+ 新建看板</button>
+      <button class="btn" onclick="openDialog('编辑看板','chart-edit-dashboard')">编辑</button>
+      <button class="btn btn-warning" onclick="showToast('已停用')">停用</button>
+      <button class="btn btn-danger" onclick="openDialog('删除确认','delete-confirm')">删除</button>
+      <button class="btn btn-success" onclick="openDialog('导出配置','export-config')">导出</button>
+      <button class="btn btn-info" onclick="openDialog('数据源配置','chart-datasource')">数据源配置</button>
+      <button class="btn btn-info" onclick="openDialog('指标配置','chart-metric')">指标配置</button>
+      <button class="btn" onclick="openDialog('刷新频率','chart-refresh-rate')">刷新频率</button>
+      <button class="btn" onclick="openDialog('样式配置','chart-style')">样式配置</button>
+      <button class="btn" onclick="openDialog('布局配置','chart-layout')">布局配置</button>
+      <button class="btn" onclick="openDialog('推送配置','chart-push')">推送配置</button>
+      <button class="btn" onclick="openDialog('权限配置','chart-permission')">权限配置</button>
+      <button class="btn" onclick="openDialog('公开链接','chart-public-link')">公开链接</button>
+    </div>
+  </div>
+  <div class="chart-grid">
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <span class="chart-card-title">应用访问趋势</span>
+        <button class="btn btn-mini" onclick="showToast('下载图片成功')">下载图片</button>
+      </div>
+      <div class="chart-card-body">
+        <div class="mini-chart bar-chart">
+          <div class="chart-bar" style="height:50%"></div>
+          <div class="chart-bar" style="height:65%"></div>
+          <div class="chart-bar" style="height:55%"></div>
+          <div class="chart-bar" style="height:75%"></div>
+          <div class="chart-bar" style="height:80%"></div>
+          <div class="chart-bar" style="height:60%"></div>
+          <div class="chart-bar" style="height:45%"></div>
+        </div>
+        <div class="chart-xaxis"><span>周一</span><span>周二</span><span>周三</span><span>周四</span><span>周五</span><span>周六</span><span>周日</span></div>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <span class="chart-card-title">应用类型分布</span>
+        <button class="btn btn-mini" onclick="showToast('下载图片成功')">下载图片</button>
+      </div>
+      <div class="chart-card-body">
+        <div class="mini-chart pie-chart">
+          <div class="pie" style="background: conic-gradient(#409eff 0% 30%, #67c23a 30% 55%, #e6a23c 55% 75%, #f56c6c 75% 90%, #909399 90% 100%);"></div>
+        </div>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <span class="chart-card-title">应用使用量排行</span>
+        <button class="btn btn-mini" onclick="showToast('下载图片成功')">下载图片</button>
+      </div>
+      <div class="chart-card-body">
+        <div class="mini-chart bar-chart horizontal">
+          <div class="h-bar-row"><span class="h-bar-label">应用A</span><div class="h-bar" style="width:100%"></div><span class="h-bar-value">2580</span></div>
+          <div class="h-bar-row"><span class="h-bar-label">应用B</span><div class="h-bar" style="width:85%"></div><span class="h-bar-value">2200</span></div>
+          <div class="h-bar-row"><span class="h-bar-label">应用C</span><div class="h-bar" style="width:70%"></div><span class="h-bar-value">1800</span></div>
+          <div class="h-bar-row"><span class="h-bar-label">应用D</span><div class="h-bar" style="width:55%"></div><span class="h-bar-value">1420</span></div>
+          <div class="h-bar-row"><span class="h-bar-label">应用E</span><div class="h-bar" style="width:40%"></div><span class="h-bar-value">1030</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <span class="chart-card-title">应用安装量增长</span>
+        <button class="btn btn-mini" onclick="showToast('下载图片成功')">下载图片</button>
+      </div>
+      <div class="chart-card-body">
+        <div class="mini-chart line-chart">
+          <svg viewBox="0 0 200 80" style="width:100%;height:100%;">
+            <polyline points="0,70 30,62 60,55 90,48 120,38 150,28 180,18 200,10" fill="none" stroke="#67c23a" stroke-width="2"/>
+            <polyline points="0,72 30,66 60,60 90,52 120,45 150,35 180,25 200,18" fill="none" stroke="#409eff" stroke-width="2" stroke-dasharray="3,3"/>
+          </svg>
+        </div>
+        <div class="chart-xaxis"><span>1月</span><span>2月</span><span>3月</span><span>4月</span><span>5月</span><span>6月</span><span>7月</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+<div id="tab-behavior-viz" class="tab-panel">
+  <div style="margin-bottom:12px;font-size:14px;font-weight:500;color:#303133;">行为统计可视化配置</div>
+  <div style="display:flex;align-items:center;gap:12px;margin-bottom:16px;">
+    <select class="el-select" style="width:200px;"><option>测试2</option><option>行为总览看板</option><option>活跃度分析看板</option></select>
+    <div class="btn-group">
+      <button class="btn btn-primary" onclick="openDialog('新建看板','chart-new-dashboard')">+ 新建看板</button>
+      <button class="btn" onclick="openDialog('编辑看板','chart-edit-dashboard')">编辑</button>
+      <button class="btn btn-warning" onclick="showToast('已停用')">停用</button>
+      <button class="btn btn-danger" onclick="openDialog('删除确认','delete-confirm')">删除</button>
+      <button class="btn btn-success" onclick="openDialog('导出配置','export-config')">导出</button>
+      <button class="btn btn-info" onclick="openDialog('数据源配置','chart-datasource')">数据源配置</button>
+      <button class="btn btn-info" onclick="openDialog('指标配置','chart-metric')">指标配置</button>
+      <button class="btn" onclick="openDialog('刷新频率','chart-refresh-rate')">刷新频率</button>
+      <button class="btn" onclick="openDialog('样式配置','chart-style')">样式配置</button>
+      <button class="btn" onclick="openDialog('布局配置','chart-layout')">布局配置</button>
+      <button class="btn" onclick="openDialog('推送配置','chart-push')">推送配置</button>
+      <button class="btn" onclick="openDialog('权限配置','chart-permission')">权限配置</button>
+      <button class="btn" onclick="openDialog('公开链接','chart-public-link')">公开链接</button>
+    </div>
+  </div>
+  <div class="chart-grid">
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <span class="chart-card-title">用户登录趋势</span>
+        <button class="btn btn-mini" onclick="showToast('下载图片成功')">下载图片</button>
+      </div>
+      <div class="chart-card-body">
+        <div class="mini-chart bar-chart">
+          <div class="chart-bar" style="height:65%"></div>
+          <div class="chart-bar" style="height:80%"></div>
+          <div class="chart-bar" style="height:55%"></div>
+          <div class="chart-bar" style="height:90%"></div>
+          <div class="chart-bar" style="height:75%"></div>
+          <div class="chart-bar" style="height:45%"></div>
+          <div class="chart-bar" style="height:35%"></div>
+        </div>
+        <div class="chart-xaxis"><span>周一</span><span>周二</span><span>周三</span><span>周四</span><span>周五</span><span>周六</span><span>周日</span></div>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <span class="chart-card-title">行为类型分布</span>
+        <button class="btn btn-mini" onclick="showToast('下载图片成功')">下载图片</button>
+      </div>
+      <div class="chart-card-body">
+        <div class="mini-chart pie-chart">
+          <div class="pie" style="background: conic-gradient(#409eff 0% 25%, #67c23a 25% 50%, #e6a23c 50% 70%, #f56c6c 70% 85%, #909399 85% 100%);"></div>
+        </div>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <span class="chart-card-title">活跃用户时段分布</span>
+        <button class="btn btn-mini" onclick="showToast('下载图片成功')">下载图片</button>
+      </div>
+      <div class="chart-card-body">
+        <div class="mini-chart bar-chart horizontal">
+          <div class="h-bar-row"><span class="h-bar-label">9-11点</span><div class="h-bar" style="width:85%"></div><span class="h-bar-value">1850</span></div>
+          <div class="h-bar-row"><span class="h-bar-label">14-16点</span><div class="h-bar" style="width:90%"></div><span class="h-bar-value">1960</span></div>
+          <div class="h-bar-row"><span class="h-bar-label">16-18点</span><div class="h-bar" style="width:70%"></div><span class="h-bar-value">1520</span></div>
+          <div class="h-bar-row"><span class="h-bar-label">19-21点</span><div class="h-bar" style="width:50%"></div><span class="h-bar-value">1080</span></div>
+          <div class="h-bar-row"><span class="h-bar-label">其他</span><div class="h-bar" style="width:30%"></div><span class="h-bar-value">650</span></div>
+        </div>
+      </div>
+    </div>
+    <div class="chart-card">
+      <div class="chart-card-header">
+        <span class="chart-card-title">活跃度变化趋势</span>
+        <button class="btn btn-mini" onclick="showToast('下载图片成功')">下载图片</button>
+      </div>
+      <div class="chart-card-body">
+        <div class="mini-chart line-chart">
+          <svg viewBox="0 0 200 80" style="width:100%;height:100%;">
+            <polyline points="0,40 30,35 60,45 90,30 120,25 150,35 180,20 200,25" fill="none" stroke="#e6a23c" stroke-width="2"/>
+            <polyline points="0,55 30,50 60,52 90,45 120,40 150,38 180,35 200,32" fill="none" stroke="#409eff" stroke-width="2" stroke-dasharray="3,3"/>
+          </svg>
+        </div>
+        <div class="chart-xaxis"><span>1月</span><span>2月</span><span>3月</span><span>4月</span><span>5月</span><span>6月</span><span>7月</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+</div></div></div></section>
 <section id="page-query" class="page-section"><div class="card"><div class="card-body"><div class="topbar-left" style="margin-bottom:16px;font-size:16px;">数据查询</div><div class="tabs"><div class="tab-item active" data-tab="tab-org-index" onclick="showTab('page-query','tab-org-index')">单位索引</div><div class="tab-item " data-tab="tab-dept-index" onclick="showTab('page-query','tab-dept-index')">部门索引</div><div class="tab-item " data-tab="tab-user-index" onclick="showTab('page-query','tab-user-index')">用户索引</div><div class="tab-item " data-tab="tab-todo-index" onclick="showTab('page-query','tab-todo-index')">待办索引</div><div class="tab-item " data-tab="tab-group-index" onclick="showTab('page-query','tab-group-index')">群组索引</div><div class="tab-item " data-tab="tab-phone-index" onclick="showTab('page-query','tab-phone-index')">网络电话索引</div><div class="tab-item " data-tab="tab-activity-index" onclick="showTab('page-query','tab-activity-index')">活跃度索引</div><div class="tab-item " data-tab="tab-schedule-index" onclick="showTab('page-query','tab-schedule-index')">日程索引</div><div class="tab-item " data-tab="tab-app-index" onclick="showTab('page-query','tab-app-index')">应用索引</div><div class="tab-item " data-tab="tab-behavior-index" onclick="showTab('page-query','tab-behavior-index')">行为索引</div><div class="tab-item " data-tab="tab-warning" onclick="showTab('page-query','tab-warning')">预警配置</div></div><div id="tab-org-index" class="tab-panel active"><div class="filter-bar">
 <div class="form-item" style="position:relative;"><label>关键词</label><input class="el-input autocomplete-input" name="kw" placeholder="请输入关键词" onfocus="this.nextElementSibling.style.display='block'" onblur="setTimeout(()=>{this.nextElementSibling.style.display='none'},200)">
 <div class="autocomplete-dropdown" style="display:none;position:absolute;top:32px;left:60px;right:0;background:#fff;border:1px solid #dcdfe6;border-top:none;border-radius:0 0 4px 4px;z-index:100;max-height:150px;overflow-y:auto;">
@@ -1342,6 +1735,38 @@ var DIALOG_CONTENTS = {
 <div class="form-item-full"><label class="form-label">白名单设置</label><div style="border:1px solid #dcdfe6;border-radius:4px;padding:10px;max-height:120px;overflow-y:auto"><div style="display:flex;flex-wrap:wrap;gap:10px"><label style="display:flex;align-items:center;gap:5px"><input type="checkbox" checked>单位索引1</label><label style="display:flex;align-items:center;gap:5px"><input type="checkbox" checked>用户索引3</label><label style="display:flex;align-items:center;gap:5px"><input type="checkbox">待办索引2</label><label style="display:flex;align-items:center;gap:5px"><input type="checkbox" checked>应用索引5</label><label style="display:flex;align-items:center;gap:5px"><input type="checkbox">行为索引4</label><label style="display:flex;align-items:center;gap:5px"><input type="checkbox">活跃度索引1</label></div></div></div>
 <div class="form-row"><div class="form-item2"><label class="form-label">清理提醒</label><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></div><div class="form-item2"><label class="form-label">提醒方式</label><select class="el-select"><option>站内消息</option><option>邮件通知</option><option>短信通知</option></select></div></div>
 <div style="font-size:12px;color:#e6a23c;margin-top:10px">⚠ 清理操作不可恢复，请谨慎配置自动清理规则</div>`,
+  "chart-new-dashboard": `<div class="form-row"><div class="form-item2"><label class="form-label"><span class="required">*</span>看板名称</label><input class="el-input" placeholder="请输入看板名称"></div><div class="form-item2"><label class="form-label">所属分类</label><select class="el-select"><option>用户统计</option><option>待办统计</option><option>应用统计</option><option>行为统计</option></select></div></div>
+<div class="form-item-full"><label class="form-label">看板描述</label><textarea class="el-textarea" rows="3" placeholder="请输入看板描述"></textarea></div>
+<div class="form-row"><div class="form-item2"><label class="form-label">状态</label><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></div><div class="form-item2"><label class="form-label">排序</label><input class="el-input" value="1"></div></div>`,
+  "chart-edit-dashboard": `<div class="form-row"><div class="form-item2"><label class="form-label"><span class="required">*</span>看板名称</label><input class="el-input" value="测试2"></div><div class="form-item2"><label class="form-label">所属分类</label><select class="el-select"><option>用户统计</option><option>待办统计</option><option>应用统计</option><option>行为统计</option></select></div></div>
+<div class="form-item-full"><label class="form-label">看板描述</label><textarea class="el-textarea" rows="3" placeholder="请输入看板描述">用户统计分析看板</textarea></div>
+<div class="form-row"><div class="form-item2"><label class="form-label">状态</label><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></div><div class="form-item2"><label class="form-label">排序</label><input class="el-input" value="1"></div></div>`,
+  "chart-refresh-rate": `<div style="padding:10px 0"><div style="margin-bottom:16px;font-weight:500;color:#303133">设置数据刷新频率</div>
+<div style="display:flex;flex-direction:column;gap:12px;">
+  <label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:8px 12px;border:1px solid #dcdfe6;border-radius:4px;"><input type="radio" name="refresh" checked> 实时刷新（数据变更即时更新）</label>
+  <label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:8px 12px;border:1px solid #dcdfe6;border-radius:4px;"><input type="radio" name="refresh"> 每 5 分钟</label>
+  <label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:8px 12px;border:1px solid #dcdfe6;border-radius:4px;"><input type="radio" name="refresh"> 每 10 分钟</label>
+  <label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:8px 12px;border:1px solid #dcdfe6;border-radius:4px;"><input type="radio" name="refresh"> 每 30 分钟</label>
+  <label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:8px 12px;border:1px solid #dcdfe6;border-radius:4px;"><input type="radio" name="refresh"> 每 1 小时</label>
+  <label style="display:flex;align-items:center;gap:10px;cursor:pointer;padding:8px 12px;border:1px solid #dcdfe6;border-radius:4px;"><input type="radio" name="refresh"> 手动刷新（仅点击刷新按钮时更新）</label>
+</div>
+<div style="margin-top:12px;font-size:12px;color:#909399;">💡 实时刷新对性能要求较高，建议根据数据重要性选择合适的刷新频率</div></div>`,
+  "chart-layout": `<div class="form-row"><div class="form-item2"><label class="form-label">布局列数</label><select class="el-select"><option>2列</option><option>3列</option><option>4列</option></select></div><div class="form-item2"><label class="form-label">自适应布局</label><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></div></div>
+<div class="form-row"><div class="form-item2"><label class="form-label">卡片间距（px）</label><input class="el-input" value="16"></div><div class="form-item2"><label class="form-label">卡片圆角（px）</label><input class="el-input" value="4"></div></div>
+<div class="form-item-full"><label class="form-label">布局方式</label><div style="display:flex;gap:20px;align-items:center;height:32px;"><label style="color:#606266;cursor:pointer;"><input type="radio" name="layout" checked> 网格布局</label><label style="color:#606266;cursor:pointer;"><input type="radio" name="layout"> 瀑布流</label><label style="color:#606266;cursor:pointer;"><input type="radio" name="layout"> 自由布局</label></div></div>
+<div style="margin-top:12px;font-size:12px;color:#909399;">💡 开启自适应布局后，图表将根据屏幕宽度自动调整列数</div>`,
+  "chart-push": `<div class="form-row"><div class="form-item2"><label class="form-label"><span class="required">*</span>推送方式</label><select class="el-select"><option>邮件</option><option>站内信</option><option>钉钉</option><option>邮件+站内信</option></select></div><div class="form-item2"><label class="form-label"><span class="required">*</span>推送频率</label><select class="el-select"><option>每日推送</option><option>每周推送</option><option>每月推送</option><option>数据异常时推送</option></select></div></div>
+<div class="form-item-full"><label class="form-label"><span class="required">*</span>接收人</label><div style="border:1px solid #dcdfe6;border-radius:4px;padding:10px;max-height:120px;overflow-y:auto"><div style="display:flex;flex-wrap:wrap;gap:10px"><label style="display:flex;align-items:center;gap:5px"><input type="checkbox" checked> 张三</label><label style="display:flex;align-items:center;gap:5px"><input type="checkbox" checked> 李四</label><label style="display:flex;align-items:center;gap:5px"><input type="checkbox"> 王五</label><label style="display:flex;align-items:center;gap:5px"><input type="checkbox"> 赵六</label><label style="display:flex;align-items:center;gap:5px"><input type="checkbox"> 数据管理员组</label></div></div></div>
+<div class="form-row"><div class="form-item2"><label class="form-label">推送时间</label><input class="el-input" value="09:00"></div><div class="form-item2"><label class="form-label">状态</label><label class="switch"><input type="checkbox" checked><span class="slider"></span></label></div></div>
+<div class="form-item-full"><label class="form-label">推送内容模板</label><textarea class="el-textarea" rows="2" placeholder="请输入推送内容模板">【态势感知】{看板名称}数据已更新，请及时查看。</textarea></div>`,
+  "chart-permission": `<div class="form-row"><div class="form-item2"><label class="form-label">查看权限</label><select class="el-select"><option>全部用户可见</option><option>指定部门可见</option><option>指定角色可见</option><option>仅创建者可见</option></select></div><div class="form-item2"><label class="form-label">编辑权限</label><select class="el-select"><option>仅创建者可编辑</option><option>管理员可编辑</option><option>指定角色可编辑</option></select></div></div>
+<div class="form-item-full"><label class="form-label">授权用户/角色</label><div style="border:1px solid #dcdfe6;border-radius:4px;padding:10px;max-height:150px;overflow-y:auto"><div style="display:flex;flex-wrap:wrap;gap:10px"><label style="display:flex;align-items:center;gap:5px"><input type="checkbox" checked> 管理员角色</label><label style="display:flex;align-items:center;gap:5px"><input type="checkbox" checked> 数据分析组</label><label style="display:flex;align-items:center;gap:5px"><input type="checkbox"> 张三</label><label style="display:flex;align-items:center;gap:5px"><input type="checkbox"> 李四</label><label style="display:flex;align-items:center;gap:5px"><input type="checkbox"> 普通用户角色</label></div></div></div>
+<div style="margin-top:12px;font-size:12px;color:#e6a23c;">⚠ 权限变更将即时生效，请谨慎操作</div>`,
+  "chart-public-link": `<div style="padding:10px 0"><div style="margin-bottom:16px;font-weight:500;color:#303133">公开链接设置</div>
+<div class="form-item"><label>链接地址</label><div style="display:flex;gap:8px;"><input class="el-input" value="https://gzt.example.com/chart/public/abc123" readonly><button class="btn btn-primary" onclick="showToast('链接已复制')">复制</button></div></div>
+<div class="form-row" style="margin-top:12px;"><div class="form-item2"><label class="form-label">有效期</label><select class="el-select"><option>永久有效</option><option>7天</option><option>30天</option><option>自定义</option></select></div><div class="form-item2"><label class="form-label">访问次数</label><input class="el-input" value="128" readonly></div></div>
+<div class="form-row"><div class="form-item2"><label class="form-label">密码保护</label><label class="switch"><input type="checkbox"><span class="slider"></span></label></div><div class="form-item2"><label class="form-label">访问密码</label><input class="el-input" placeholder="请设置访问密码" disabled></div></div>
+<div style="margin-top:12px;display:flex;justify-content:space-between;align-items:center;"><div style="font-size:12px;color:#909399;">💡 公开链接允许未登录用户查看看板</div><button class="btn btn-danger" onclick="showToast('链接已吊销')">吊销链接</button></div></div>`,
   "sort-setting": `<div class="form-row"><div class="form-item2"><label class="form-label">主要排序字段</label><select class="el-select"><option>名称</option><option>创建时间</option><option>更新时间</option><option>使用次数</option></select></div><div class="form-item2"><label class="form-label">排序方式</label><div style="display:flex;gap:20px;align-items:center;height:32px;"><label style="color:#606266;cursor:pointer;"><input type="radio" name="sort1" checked> 升序</label><label style="color:#606266;cursor:pointer;"><input type="radio" name="sort1"> 降序</label></div></div></div>
 <div class="form-row"><div class="form-item2"><label class="form-label">次要排序字段</label><select class="el-select"><option>无</option><option>名称</option><option>创建时间</option><option>更新时间</option><option>使用次数</option></select></div><div class="form-item2"><label class="form-label">排序方式</label><div style="display:flex;gap:20px;align-items:center;height:32px;"><label style="color:#606266;cursor:pointer;"><input type="radio" name="sort2" checked> 升序</label><label style="color:#606266;cursor:pointer;"><input type="radio" name="sort2"> 降序</label></div></div></div>
 <div class="form-row"><div class="form-item2"><label class="form-label">第三排序字段</label><select class="el-select"><option>无</option><option>名称</option><option>创建时间</option><option>更新时间</option><option>使用次数</option></select></div><div class="form-item2"><label class="form-label">排序方式</label><div style="display:flex;gap:20px;align-items:center;height:32px;"><label style="color:#606266;cursor:pointer;"><input type="radio" name="sort3" checked> 升序</label><label style="color:#606266;cursor:pointer;"><input type="radio" name="sort3"> 降序</label></div></div></div>
@@ -1414,15 +1839,16 @@ var descData = {
     { id: 'model-restore', title: '数据恢复（版本选择）', rules: ['支持选择历史备份版本进行数据恢复', '展示版本列表含版本名称、备份时间、备份类型、文件大小、操作人', '最新版本默认选中并标注"最新版本"', '全量备份（绿色）和增量备份（橙色）类型区分', '恢复前二次确认并提示风险：恢复操作将覆盖当前数据'], accept: '选择版本确认后恢复成功，数据回滚到对应历史版本，恢复前有明确风险提示' }
   ],
   'page-chart': [
-    { id: 'chart-add', title: '新增可视化模板', rules: ['支持新增数据可视化模板', '可选择图表类型（折线图、柱状图、饼图、面积图等）', '支持配置图表样式、配色和标题', '支持用户统计可视化、待办统计可视化、应用统计可视化等多种类型'], accept: '选择类型并配置后保存成功，生成新的可视化模板' },
-    { id: 'chart-datasource', title: '数据源配置（待办统计）', rules: ['配置待办统计数据的来源信息', '支持从数据库、API、文件等多种数据源获取数据', '可设置连接信息、SQL查询语句、请求参数', '支持配置数据刷新频率和定时同步', '支持数据源连接测试'], accept: '填写数据源信息后测试连接成功，保存后待办统计可视化图表可正常读取数据，支持数据库/API/文件多种方式' },
-    { id: 'chart-dimension', title: '维度配置', rules: ['支持配置图表的维度字段（如时间、地区、部门等）', '支持多维度组合', '支持维度排序和显示格式设置', '支持钻取维度配置'], accept: '选择维度后图表按维度正确分组展示，多维度组合展示正确' },
-    { id: 'chart-metric', title: '指标配置', rules: ['支持配置图表的指标字段（如数量、占比、增长率等）', '支持多种聚合方式（求和、计数、平均值、最大值、最小值）', '支持指标计算公式', '支持指标颜色和显示单位设置'], accept: '指标数据计算正确，图表展示与配置一致' },
-    { id: 'chart-filter', title: '过滤条件配置', rules: ['支持配置图表数据的过滤条件', '支持多条件组合（与/或）', '支持时间范围过滤', '支持按维度值筛选'], accept: '过滤条件生效，图表只展示符合条件的数据' },
-    { id: 'chart-style', title: '样式配置', rules: ['支持配置图表样式（配色方案、背景、边框等）', '支持图例位置和样式设置', '支持坐标轴样式配置', '支持标题和副标题样式配置'], accept: '样式配置后图表外观与配置一致' },
-    { id: 'chart-version', title: '图表版本管理', rules: ['支持图表模板的版本管理', '支持保存新版本和版本回滚', '支持查看版本历史和版本对比', '版本记录包含修改人和修改时间'], accept: '版本列表完整，可查看各版本差异，回滚后恢复对应版本配置' },
-    { id: 'chart-preview', title: '图表预览', rules: ['支持实时预览图表效果和数据展示', '可切换不同维度和时间范围查看', '支持全屏查看模式', '支持待办统计可视化、用户统计可视化等预览'], accept: '预览效果与实际展示一致，数据实时刷新展示' },
-    { id: 'chart-export', title: '图表导出', rules: ['支持导出为图片格式（PNG/JPG）', '支持导出图表数据为Excel格式', '可选择导出尺寸和分辨率', '支持批量导出多个图表'], accept: '导出图片清晰完整，数据文件内容与图表展示一致' }
+    { id: 'chart-dashboard', title: '看板管理（新建/编辑/停用/删除）', rules: ['支持看板的新建、编辑、停用、删除操作', '新建看板需配置看板名称、描述和所属分类', '支持看板选择下拉切换不同看板', '停用的看板在列表中置灰不可用', '删除前弹出二次确认对话框'], accept: '看板管理操作正常，新建后可在下拉列表中选择，停用后置灰，删除有确认提示' },
+    { id: 'chart-datasource', title: '数据源配置', rules: ['支持配置看板的数据源信息', '支持从数据库、API、文件等多种数据源获取数据', '可设置连接信息、SQL查询语句、请求参数', '支持数据源连接测试', '每个看板可独立配置数据源'], accept: '填写数据源信息后测试连接成功，保存后看板图表可正常读取数据，支持多种数据源方式' },
+    { id: 'chart-metric', title: '指标配置', rules: ['支持配置图表的指标字段（如数量、占比、增长率等）', '支持多种聚合方式（求和、计数、平均值、最大值、最小值）', '支持指标计算公式', '支持指标颜色和显示单位设置', '每个图表可独立配置多个指标'], accept: '指标数据计算正确，图表展示与配置一致，支持多指标对比展示' },
+    { id: 'chart-refresh-rate', title: '刷新频率配置', rules: ['支持设置看板数据刷新频率', '提供实时、5分钟、10分钟、30分钟、1小时、手动等选项', '刷新频率对当前看板所有图表生效', '手动刷新时显示加载状态', '支持自动刷新和手动刷新切换'], accept: '设置刷新频率后图表按设定频率更新数据，手动刷新立即生效，刷新状态提示明确' },
+    { id: 'chart-style', title: '样式配置', rules: ['支持配置图表样式（配色方案、背景、边框等）', '支持图例位置和样式设置', '支持坐标轴样式配置', '支持标题和副标题样式配置', '支持主题切换（亮色/暗色）'], accept: '样式配置后图表外观与配置一致，主题切换即时生效' },
+    { id: 'chart-layout', title: '布局配置', rules: ['支持看板布局配置，可选择2列、3列、4列布局', '支持自适应布局模式', '支持设置图表卡片间距', '支持拖拽调整图表顺序和大小', '布局配置即时预览效果'], accept: '布局配置生效后图表按设定布局排列，支持拖拽调整，自适应模式适配不同屏幕' },
+    { id: 'chart-push', title: '推送配置', rules: ['支持看板数据推送配置', '支持多种推送方式（邮件、站内信、钉钉等）', '可设置推送频率（每日、每周、每月、触发式）', '支持选择推送接收人或接收群组', '支持推送内容模板配置'], accept: '配置推送后按设定规则自动推送看板数据，推送记录可追溯，多种推送方式正常可用' },
+    { id: 'chart-permission', title: '权限配置', rules: ['支持看板权限配置', '支持查看权限和编辑权限设置', '支持按用户或角色分配权限', '支持公开和私有看板设置', '权限变更即时生效'], accept: '不同权限用户看到的看板范围正确，无权限的看板不可见，权限变更后立即生效' },
+    { id: 'chart-public-link', title: '公开链接', rules: ['支持生成看板公开访问链接', '可设置链接有效期（永久、7天、30天、自定义）', '支持密码保护功能', '支持查看访问次数统计', '可随时吊销公开链接'], accept: '生成公开链接后可通过链接访问看板，密码保护有效，访问次数准确统计，吊销后链接失效' },
+    { id: 'chart-download', title: '图表下载', rules: ['支持单个图表下载为图片格式（PNG/JPG）', '每个图表右上角提供下载按钮', '下载图片包含图表标题和数据', '支持批量下载看板所有图表', '下载图片清晰度可配置'], accept: '点击下载按钮后成功生成图片文件，图片内容完整清晰，批量下载功能正常' }
   ],
   'page-query': [
     { id: 'query-add', title: '新增查询方案', rules: ['支持保存自定义查询方案', '可设置方案名称、编码和描述', '支持公开/私有方案设置', '方案可被快速调用执行查询'], accept: '保存方案后可在列表中查看，下次可直接使用方案查询' },
@@ -1476,7 +1902,8 @@ var descData = {
     { id: 'sys-group-chat', title: '对接群聊统计信息', rules: ['从"赣政通"平台信创版底座获取群聊统计信息', '将群聊统计数据同步至运行态势分析平台', '提升数据分析时效性，丰富数据分析维度', '为精准洞察用户行为模式、评估平台使用效果提供数据支撑', '支持查看群聊统计的详细数据'], accept: '群聊统计信息从赣政通信创版底座同步获取，数据展示正确，支持查看详情' },
     { id: 'sys-group-count', title: '对接群聊数信息', rules: ['从"赣政通"平台信创版底座获取群聊数信息', '将群聊数数据同步至运行态势分析平台', '提升数据分析时效性，丰富数据分析维度', '为精准洞察用户行为模式、评估平台使用效果提供数据支撑', '支持查看群聊数的详细数据'], accept: '群聊数信息从赣政通信创版底座同步获取，数据展示正确，支持查看详情' },
     { id: 'sys-chat-window', title: '对接聊天窗口统计信息', rules: ['从"赣政通"平台信创版底座获取聊天窗口统计信息', '将聊天窗口统计数据同步至运行态势分析平台', '提升数据分析时效性，丰富数据分析维度', '为精准洞察用户行为模式、评估平台使用效果提供数据支撑', '支持查看聊天窗口统计的详细数据'], accept: '聊天窗口统计信息从赣政通信创版底座同步获取，数据展示正确，支持查看详情' },
-    { id: 'sys-single-chat', title: '对接单聊统计信息', rules: ['从"赣政通"平台信创版底座获取单聊统计信息', '将单聊统计数据同步至运行态势分析平台', '提升数据分析时效性，丰富数据分析维度', '为精准洞察用户行为模式、评估平台使用效果提供数据支撑', '支持查看单聊统计的详细数据'], accept: '单聊统计信息从赣政通信创版底座同步获取，数据展示正确，支持查看详情' }
+    { id: 'sys-single-chat', title: '对接单聊统计信息', rules: ['从"赣政通"平台信创版底座获取单聊统计信息', '将单聊统计数据同步至运行态势分析平台', '提升数据分析时效性，丰富数据分析维度', '为精准洞察用户行为模式、评估平台使用效果提供数据支撑', '支持查看单聊统计的详细数据'], accept: '单聊统计信息从赣政通信创版底座同步获取，数据展示正确，支持查看详情' },
+    { id: 'sys-interface-delete', title: '接口日志删除', rules: ['支持删除无用的接口日志信息', '支持单条删除和批量删除', '删除前进行二次确认', '支持按时间范围清理过期日志', '删除操作记录操作日志', '可配置日志自动清理策略'], accept: '选择接口日志后点击删除，确认后日志被移除，删除操作有记录，可按时间范围批量清理' }
   ],
   'page-dict': [
     { id: 'dict-add', title: '新增字典', rules: ['支持新增字典类型和字典项', '可设置字典编码和字典名称', '支持设置排序序号', '支持字典类型和字典项两级管理'], accept: '新增字典保存成功，列表显示新字典配置' },
@@ -1564,15 +1991,16 @@ function addProtoMarkers(pageKey, items) {
     'model-delete': 'tbody tr:first-child a:nth-of-type(2)',
     'model-backup': '.toolbar .btn-group button:nth-of-type(6)',
     'model-restore': '.toolbar .btn-group button:nth-of-type(7)',
-    'chart-add': '.toolbar .btn-primary',
-    'chart-datasource': '.data-table thead th:nth-of-type(5)',
-    'chart-dimension': '.data-table thead th:nth-of-type(7)',
-    'chart-metric': '.data-table thead th:nth-of-type(8)',
-    'chart-filter': '.data-table thead th:nth-of-type(9)',
-    'chart-style': '.data-table thead th:nth-of-type(10)',
-    'chart-version': '.toolbar .btn-group button:nth-of-type(5)',
-    'chart-preview': 'tbody tr:first-child a:nth-of-type(4)',
-    'chart-export': '.toolbar .btn-group button:nth-of-type(3)',
+    'chart-dashboard': '.btn-group .btn-primary',
+    'chart-datasource': '.btn-group .btn-info:nth-of-type(1)',
+    'chart-metric': '.btn-group .btn-info:nth-of-type(2)',
+    'chart-refresh-rate': '.btn-group button:nth-of-type(8)',
+    'chart-style': '.btn-group button:nth-of-type(9)',
+    'chart-layout': '.btn-group button:nth-of-type(10)',
+    'chart-push': '.btn-group button:nth-of-type(11)',
+    'chart-permission': '.btn-group button:nth-of-type(12)',
+    'chart-public-link': '.btn-group button:nth-of-type(13)',
+    'chart-download': '.chart-card:first-child .btn-mini',
     'query-add': '.toolbar .btn-primary',
     'query-condition': '.filter-bar',
     'query-result': '.data-table',
@@ -1620,6 +2048,7 @@ function addProtoMarkers(pageKey, items) {
     'sys-group-count': '.tab-panel.active .data-table tbody tr:nth-of-type(8)',
     'sys-chat-window': '.tab-panel.active .data-table tbody tr:nth-of-type(9)',
     'sys-single-chat': '.tab-panel.active .data-table tbody tr:nth-of-type(10)',
+    'sys-interface-delete': '#tab-sys-interface .toolbar .btn-group button:nth-of-type(1)',
     'dict-add': '.toolbar .btn-primary',
     'dict-status': '.switch',
     'dict-sort': 'tbody tr:first-child td:nth-of-type(2)',
@@ -1687,15 +2116,16 @@ function drawConnections() {
     'model-delete': 'tbody tr:first-child a:nth-of-type(2)',
     'model-backup': '.toolbar .btn-group button:nth-of-type(6)',
     'model-restore': '.toolbar .btn-group button:nth-of-type(7)',
-    'chart-add': '.toolbar .btn-primary',
-    'chart-datasource': '.data-table thead th:nth-of-type(5)',
-    'chart-dimension': '.data-table thead th:nth-of-type(7)',
-    'chart-metric': '.data-table thead th:nth-of-type(8)',
-    'chart-filter': '.data-table thead th:nth-of-type(9)',
-    'chart-style': '.data-table thead th:nth-of-type(10)',
-    'chart-version': '.toolbar .btn-group button:nth-of-type(5)',
-    'chart-preview': 'tbody tr:first-child a:nth-of-type(4)',
-    'chart-export': '.toolbar .btn-group button:nth-of-type(3)',
+    'chart-dashboard': '.btn-group .btn-primary',
+    'chart-datasource': '.btn-group .btn-info:nth-of-type(1)',
+    'chart-metric': '.btn-group .btn-info:nth-of-type(2)',
+    'chart-refresh-rate': '.btn-group button:nth-of-type(8)',
+    'chart-style': '.btn-group button:nth-of-type(9)',
+    'chart-layout': '.btn-group button:nth-of-type(10)',
+    'chart-push': '.btn-group button:nth-of-type(11)',
+    'chart-permission': '.btn-group button:nth-of-type(12)',
+    'chart-public-link': '.btn-group button:nth-of-type(13)',
+    'chart-download': '.chart-card:first-child .btn-mini',
     'query-add': '.toolbar .btn-primary',
     'query-condition': '.filter-bar',
     'query-result': '.data-table',
@@ -1743,6 +2173,7 @@ function drawConnections() {
     'sys-group-count': '.tab-panel.active .data-table tbody tr:nth-of-type(8)',
     'sys-chat-window': '.tab-panel.active .data-table tbody tr:nth-of-type(9)',
     'sys-single-chat': '.tab-panel.active .data-table tbody tr:nth-of-type(10)',
+    'sys-interface-delete': '#tab-sys-interface .toolbar .btn-group button:nth-of-type(1)',
     'dict-add': '.toolbar .btn-primary',
     'dict-status': '.switch',
     'dict-sort': 'tbody tr:first-child td:nth-of-type(2)',
